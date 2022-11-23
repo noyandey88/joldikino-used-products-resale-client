@@ -1,87 +1,89 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import dslr from '../../../assets/cameras/dslr-camera.jpg'
+import mirrorless from '../../../assets/cameras/mirrorless-camera.jpg'
+import action from '../../../assets/cameras/action-camera.jpg'
 
 const Categories = () => {
   return (
-    <div className="px-8">
+    <div className="px-4 lg:px-0 mt-12">
+      <div className="mb-8">
+        <h1 className="text-4xl text-center font-bold">Camera Categories</h1>
+      </div>
       <div className="my-8 grid grid-cols-1 md:grid-cols-3 gap-4">
-
-        <Link to="/" class="group relative block bg-black">
+        {/* DSLR Cameras */}
+        <Link to="/" className="group relative block bg-black">
           <img
             alt="Developer"
-            src="https://images.unsplash.com/photo-1603871165848-0aa92c869fa1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"
-            class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+            src={dslr}
+            className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
           />
 
-          <div class="relative p-8">
-            <p class="text-sm font-medium uppercase tracking-widest text-pink-500">
-              Laptop
+          <div className="relative p-8">
+            <p className="text-sm font-medium uppercase tracking-widest text-pink-500">
+              Camera
             </p>
 
-            <p class="text-2xl font-bold text-white">Tony Wayne</p>
+            <p className="text-2xl font-bold text-white">DSLR</p>
 
-            <div class="mt-64">
+            <div className="mt-64">
               <div
-                class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
+                className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
               >
-                <p class="text-sm text-white">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
-                  perferendis hic asperiores quibusdam quidem voluptates doloremque
-                  reiciendis nostrum harum. Repudiandae?
+                <p className="text-sm text-white">
+                  Used DSLR Cameras
                 </p>
               </div>
             </div>
           </div>
         </Link>
-        <Link to="/" class="group relative block bg-black">
+        {/* Mirrorless cameras */}
+        <Link to="/" className="group relative block bg-black">
           <img
             alt="Developer"
-            src="https://images.unsplash.com/photo-1603871165848-0aa92c869fa1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"
-            class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+            src={mirrorless}
+            className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
           />
 
-          <div class="relative p-8">
-            <p class="text-sm font-medium uppercase tracking-widest text-pink-500">
-              Laptop
+          <div className="relative p-8">
+            <p className="text-sm font-medium uppercase tracking-widest text-pink-500">
+              Camera
             </p>
 
-            <p class="text-2xl font-bold text-white">Tony Wayne</p>
+            <p className="text-2xl font-bold text-white">Mirrorless</p>
 
-            <div class="mt-64">
+            <div className="mt-64">
               <div
-                class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
+                className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
               >
-                <p class="text-sm text-white">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
-                  perferendis hic asperiores quibusdam quidem voluptates doloremque
-                  reiciendis nostrum harum. Repudiandae?
+                <p className="text-sm text-white">
+                  Used Mirroless Cameras
                 </p>
               </div>
             </div>
           </div>
         </Link>
-        <Link to="/" class="group relative block bg-black">
+        {/* Action Cameras */}
+        <Link to="/" className="group relative block bg-black">
           <img
             alt="Developer"
-            src="https://images.unsplash.com/photo-1603871165848-0aa92c869fa1?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=772&q=80"
-            class="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
+            src={action}
+            className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
           />
 
-          <div class="relative p-8">
-            <p class="text-sm font-medium uppercase tracking-widest text-pink-500">
-              Laptop
+          <div className="relative p-8">
+            <p className="text-sm font-medium uppercase tracking-widest text-pink-500">
+              Camera
             </p>
 
-            <p class="text-2xl font-bold text-white">Tony Wayne</p>
+            <p className="text-2xl font-bold text-white">Action</p>
 
-            <div class="mt-64">
+            <div className="mt-64">
               <div
-                class="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
+                className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100"
               >
-                <p class="text-sm text-white">
-                  Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
-                  perferendis hic asperiores quibusdam quidem voluptates doloremque
-                  reiciendis nostrum harum. Repudiandae?
+                <p className="text-sm text-white">
+                  Used Action Cameras
                 </p>
               </div>
             </div>
