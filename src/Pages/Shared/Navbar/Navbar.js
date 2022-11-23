@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CameraIcon } from '@heroicons/react/24/solid'
+import { SwatchIcon } from '@heroicons/react/24/solid'
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -46,7 +46,7 @@ const Navbar = () => {
           title="Company"
           class="inline-flex items-center"
         >
-           <CameraIcon className="h-6 w-6 text-blue-500"/>
+           <SwatchIcon className="h-6 w-6 text-blue-500"/>
           <span class="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
             JoldiKino
           </span>
