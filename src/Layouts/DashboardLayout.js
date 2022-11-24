@@ -27,7 +27,7 @@ const DashboardLayout = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-slate-100 mb-2">
+      <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-slate-100 mb-2 px-2">
         <div>
           <div className="my-2 flex items-center gap-4">
             {
