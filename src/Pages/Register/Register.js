@@ -1,12 +1,64 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const Register = () => {
+  const { createUser, updateUserProfile, googleLogin, loading } = useContext(AuthContext);
   const { register, formState: { errors }, handleSubmit } = useForm();
 
   const handleRegister = (data) => {
     console.log(data);
+    const name = data.name;
+    const email = data.email;
+    const password = data.password;
+    const image = data.image[0]
+    console.log(image);
+    const formData = new FormData();
+    formData.append('image', image);
+    const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_IMGBB_KEY}`;
+    fetch(url, {
+      method: 'POST',
+      body: formData
+    })
+      .then(res => res.json())
+      .then(data => {
+        // create a user
+        createUser(email, password)
+          .then((result) => {
+            const user = result.user;
+            // update profile
+            updateUserProfile(name, data.data.url)
+              .then(() => {
+                toast.success('User created successfully with name and photo');
+              })
+              .catch(error => {
+                console.error(error);
+                toast.error(error.message);
+              })
+            console.log(user);
+          })
+          .catch((error) => {
+            console.error(error);
+            toast.error(error.message);
+          })
+      }).catch(error => {
+        console.log(error);
+      })
+  };
+
+  const handleGoogleRegistration = () => {
+    googleLogin()
+      .then((result) => {
+        const user = result.user;
+        console.log(user);
+        toast.success('Register with Google successful');
+      })
+      .catch((error) => {
+        console.error(error);
+        toast.error(error.message);
+    })
   }
 
   return (
@@ -15,6 +67,20 @@ const Register = () => {
         <div className="container flex flex-col items-center justify-center min-h-screen px-6 mx-auto">
           <form onSubmit={handleSubmit(handleRegister)} className="w-full max-w-md">
             <h1 className="text-3xl font-semibold text-gray-800 capitalize">Register</h1>
+            {/* Name */}
+            <div className="relative flex items-center mt-8">
+
+              <input {...register("name", {
+                required: "Name is required"
+              })}
+                type="text" className="block w-full py-3 text-gray-700 bg-white border rounded-md px-4 focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Name" />
+            </div>
+            {errors.name && <p className="mt-1 text-red-500 font-semibold">{errors.name?.message}</p>}
+            {/* Photo */}
+            <div className="relative flex items-center mt-8">
+              <input {...register("image")}
+                type="file" className="block w-full py-3 text-gray-700 bg-white border rounded-md px-4 focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" accept="image/*" />
+            </div>
             {/* email */}
             <div className="relative flex items-center mt-8">
               <span className="absolute">
@@ -60,7 +126,7 @@ const Register = () => {
             </div>
           </form>
           <div>
-            <button className="flex items-center justify-center px-6 py-3 mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg hover:bg-gray-50 w-full">
+            <button onClick={handleGoogleRegistration} className="flex items-center justify-center px-6 py-3 mt-4 text-gray-600 transition-colors duration-300 transform border rounded-lg hover:bg-gray-50 w-full">
               <svg className="w-6 h-6 mx-2" viewBox="0 0 40 40">
                 <path d="M36.3425 16.7358H35V16.6667H20V23.3333H29.4192C28.045 27.2142 24.3525 30 20 30C14.4775 30 10 25.5225 10 20C10 14.4775 14.4775 9.99999 20 9.99999C22.5492 9.99999 24.8683 10.9617 26.6342 12.5325L31.3483 7.81833C28.3717 5.04416 24.39 3.33333 20 3.33333C10.7958 3.33333 3.33335 10.7958 3.33335 20C3.33335 29.2042 10.7958 36.6667 20 36.6667C29.2042 36.6667 36.6667 29.2042 36.6667 20C36.6667 18.8825 36.5517 17.7917 36.3425 16.7358Z" fill="#FFC107" />
                 <path d="M5.25497 12.2425L10.7308 16.2583C12.2125 12.59 15.8008 9.99999 20 9.99999C22.5491 9.99999 24.8683 10.9617 26.6341 12.5325L31.3483 7.81833C28.3716 5.04416 24.39 3.33333 20 3.33333C13.5983 3.33333 8.04663 6.94749 5.25497 12.2425Z" fill="#FF3D00" />
