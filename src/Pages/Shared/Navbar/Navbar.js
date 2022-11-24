@@ -1,8 +1,11 @@
-import React, { useState } from 'react';
-import { SwatchIcon } from '@heroicons/react/24/solid'
+import { SwatchIcon, UserCircleIcon } from '@heroicons/react/24/solid';
+import React, { useContext, useState } from 'react';
+import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Navbar = () => {
+  const { user, logoutUser } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navMenu = <>
     <li>
@@ -25,17 +28,32 @@ const Navbar = () => {
         Blogs
       </Link>
     </li>
-    <li>
-      <Link
-        to="/dashboard"
-        aria-label="Product pricing"
-        title="Product pricing"
-        className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
-      >
-        Dashboard
-      </Link>
-    </li>
+    {
+      user?.uid &&
+      <li>
+        <Link
+          to="/dashboard"
+          aria-label="Product pricing"
+          title="Product pricing"
+          className="font-medium tracking-wide text-gray-700 transition-colors duration-200 hover:text-deep-purple-accent-400"
+        >
+          Dashboard
+        </Link>
+      </li>
+    }
   </>
+
+  const handleLogout = () => {
+    logoutUser()
+      .then(() => {
+        toast.success('Logout Successful');
+      })
+      .catch((error) => {
+        toast.error(error.message);
+      })
+  };
+
+  console.log(user);
 
   return (
     <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-4 lg:px-0">
@@ -46,7 +64,7 @@ const Navbar = () => {
           title="Company"
           className="inline-flex items-center"
         >
-           <SwatchIcon className="h-6 w-6 text-blue-500"/>
+          <SwatchIcon className="h-6 w-6 text-sky-500" />
           <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
             JoldiKino
           </span>
@@ -55,16 +73,27 @@ const Navbar = () => {
           {navMenu}
         </ul>
         <ul className="flex items-center hidden space-x-8 lg:flex">
-          <li>
-            <Link
-              to="/login"
-              className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none btn btn-primary"
-              aria-label="Sign up"
-              title="Sign up"
-            >
-              Login
-            </Link>
-          </li>
+          {
+            user?.uid ?
+              <div className="flex gap-4 items-center">
+                <button onClick={handleLogout} className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none btn btn-primary">Logout</button>
+                {
+                  user?.photoURL ?
+                    <img src={user?.photoURL} alt="user" />
+                    :
+                    <UserCircleIcon className="h-12 w-12 text-sky-500" title={user?.displayName} />
+                }
+              </div>
+              :
+              <li>
+                <Link
+                  to="/login"
+                  className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none btn btn-primary"
+                >
+                  Login
+                </Link>
+              </li>
+          }
         </ul>
         <div className="lg:hidden">
           <button
@@ -93,31 +122,17 @@ const Navbar = () => {
               <div className="p-5 bg-white border rounded shadow-sm">
                 <div className="flex items-center justify-between mb-4">
                   <div>
-                    <a
-                      href="/"
+                    <Link
+                      to="/"
                       aria-label="Company"
                       title="Company"
                       className="inline-flex items-center"
                     >
-                      <svg
-                        className="w-8 text-deep-purple-accent-400"
-                        viewBox="0 0 24 24"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeMiterlimit="10"
-                        stroke="currentColor"
-                        fill="none"
-                      >
-                        <rect x="3" y="1" width="7" height="12" />
-                        <rect x="3" y="17" width="7" height="6" />
-                        <rect x="14" y="1" width="7" height="6" />
-                        <rect x="14" y="11" width="7" height="12" />
-                      </svg>
+                      <SwatchIcon className="h-6 w-6 text-sky-500" />
                       <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
                         JoldiKino
                       </span>
-                    </a>
+                    </Link>
                   </div>
                   <div>
                     <button
@@ -138,15 +153,27 @@ const Navbar = () => {
                 <nav>
                   <ul className="space-y-4">
                     {navMenu}
-                    <li>
-                      <button
-                        className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none btn btn-primary"
-                        aria-label="Sign up"
-                        title="Sign up"
-                      >
-                        Sign up
-                      </button>
-                    </li>
+                    {
+                      user?.uid ?
+                        <div className="flex gap-4 items-center">
+                          <button onClick={handleLogout} className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none btn btn-primary">Logout</button>
+                          {
+                            user?.photoURL ?
+                              <img src={user?.photoURL} alt="user" />
+                              :
+                              <UserCircleIcon className="h-12 w-12 text-sky-500" title={user?.displayName} />
+                          }
+                        </div>
+                        :
+                        <li>
+                          <Link
+                            to="/login"
+                            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none btn btn-primary"
+                          >
+                            Login
+                          </Link>
+                        </li>
+                    }
                   </ul>
                 </nav>
               </div>
