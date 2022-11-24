@@ -56,13 +56,14 @@ const Navbar = () => {
         </ul>
         <ul className="flex items-center hidden space-x-8 lg:flex">
           <li>
-            <button
+            <Link
+              to="/login"
               className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none btn btn-primary"
               aria-label="Sign up"
               title="Sign up"
             >
               Login
-            </button>
+            </Link>
           </li>
         </ul>
         <div className="lg:hidden">
