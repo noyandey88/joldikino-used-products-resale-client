@@ -1,3 +1,4 @@
+import { UserCircleIcon } from '@heroicons/react/24/solid';
 import React, { useContext, useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import { getUserRole } from '../api/user';
@@ -13,12 +14,12 @@ const DashboardLayout = () => {
   useEffect(() => {
     getUserRole(user?.email)
       .then(data => {
-      console.log(data);
+        console.log(data);
         setUserRole(data);
       })
       .catch(error => {
         console.error(error);
-    })
+      })
   }, [user]);
 
   console.log(userRole);
@@ -26,10 +27,27 @@ const DashboardLayout = () => {
   return (
     <div>
       <Navbar></Navbar>
-      <div>
-        <Outlet></Outlet>
-        <Sidebar userRole={userRole}></Sidebar>
+      <div className="flex flex-col md:flex-row gap-4 justify-between items-center bg-slate-100 mb-2">
+        <div>
+          <div className="my-2 flex items-center gap-4">
+            {
+              user?.photoURL ?
+                <img className="w-20" src={user?.photoURL} alt="" />
+                :
+                <UserCircleIcon className="h-20 w-20 text-sky-500" title={user?.displayName} />
+            }
+            <div>
+              <h2 className="font-medium">User type: <span className="font-bold text-primary capitalize">{userRole}</span></h2>
+              <p className="font-medium">Name: {user?.displayName}</p>
+              <p className="font-medium">Email: {user?.email}</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <Sidebar userRole={userRole}></Sidebar>
+        </div>
       </div>
+      <Outlet></Outlet>
     </div>
   );
 };

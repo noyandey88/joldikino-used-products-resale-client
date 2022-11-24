@@ -2,8 +2,8 @@ import React from 'react';
 
 const Welcome = () => {
   return (
-    <div>
-      <h2>Welcome to Dashboard for Admin / Seller / Buyer</h2>
+    <div className="bg-sky-100 min-h-screen flex justify-center items-center">
+      <h2 className="text-6xl font-semibold text-center">Welcome to Dashboard</h2>
     </div>
   );
 };

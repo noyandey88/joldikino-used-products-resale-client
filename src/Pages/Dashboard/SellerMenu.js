@@ -1,25 +1,14 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { AuthContext } from '../../contexts/AuthProvider';
 
 const SellerMenu = () => {
-  const { user } = useContext(AuthContext);
   return (
-    <div>
-      <div className="my-2 flex items-center gap-4">
-          <img className="w-20" src={user?.photoURL} alt="" />
-        <div>
-          <h2 className="font-medium">User type: <span className="font-bold text-primary">Seller</span></h2>
-          <p className="font-medium">Name: {user?.displayName}</p>
-          <p className="font-medium">Email: {user?.email}</p>
-        </div>
-      </div>
-      <hr />
-      <ul className="menu p-2 w-80 bg-base-100 text-base-content">
-        <li><NavLink to="/products">My Products</NavLink></li>
-        <li><NavLink to="/addproduct">Add A Product</NavLink></li>
-        <li><NavLink to="/buyers">My Buyers</NavLink></li>
-      </ul>
+    <div className="inline-flex border-b border-gray-200">
+      <NavLink to="/dashboard" className="h-10 px-4 py-2 -mb-px text-sm text-center text-sky-600 bg-transparent border-b-2 border-blue-500 sm:text-base whitespace-nowrap focus:outline-none">My Products</NavLink>
+
+      <NavLink to="/dashboard" className="h-10 px-4 py-2 -mb-px text-sm text-center text-gray-700 bg-transparent border-b-2 border-transparent sm:text-base whitespace-nowrap cursor-base focus:outline-none hover:border-gray-400">Add A Product</NavLink>
+
+      <NavLink to="/dashboard" className="h-10 px-4 py-2 -mb-px text-sm text-center text-gray-700 bg-transparent border-b-2 border-transparent sm:text-base whitespace-nowrap cursor-base focus:outline-none hover:border-gray-400">My Buyers</NavLink>
     </div>
   );
 };

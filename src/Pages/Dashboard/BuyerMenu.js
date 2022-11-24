@@ -1,3 +1,4 @@
+import { UserCircleIcon } from '@heroicons/react/24/solid';
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AuthContext } from '../../contexts/AuthProvider';
@@ -5,17 +6,10 @@ import { AuthContext } from '../../contexts/AuthProvider';
 const BuyerMenu = () => {
   const { user } = useContext(AuthContext);
   return (
-    <div>
-      <div className="my-2">
-        <div>
-          <h2 className="font-medium bg-sky-400 text-white">User type: <span className="font-bold">Buyer</span></h2>
-          <p>Name: <span className="font-bold">{user?.displayName}</span></p>
-        </div>
-      </div>
-      <ul className="menu p-4 w-80 bg-base-100 text-base-content">
-        <li><NavLink to="/orders">My Orders</NavLink></li>
-        <li><NavLink to="/wishlist">My Wishlist</NavLink></li>
-      </ul>
+    <div className="inline-flex border-b border-gray-200">
+      <NavLink to="/dashboard" className="h-10 px-4 py-2 -mb-px text-sm text-center text-sky-600 bg-transparent border-b-2 border-blue-500 sm:text-base whitespace-nowrap focus:outline-none">My Orders</NavLink>
+
+      <NavLink to="/dashboard" className="h-10 px-4 py-2 -mb-px text-sm text-center text-gray-700 bg-transparent border-b-2 border-transparent sm:text-base whitespace-nowrap cursor-base focus:outline-none hover:border-gray-400">My Buyers</NavLink>
     </div>
   );
 };
