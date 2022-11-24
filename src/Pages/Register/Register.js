@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import { saveUserWithRegister } from '../../api/auth';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Register = () => {
@@ -13,7 +14,8 @@ const Register = () => {
     const name = data.name;
     const email = data.email;
     const password = data.password;
-    const image = data.image[0]
+    const image = data.image[0];
+    const role = data.role;
     console.log(image);
     const formData = new FormData();
     formData.append('image', image);
@@ -28,6 +30,7 @@ const Register = () => {
         createUser(email, password)
           .then((result) => {
             const user = result.user;
+            saveUserWithRegister(user, role);
             // update profile
             updateUserProfile(name, data.data.url)
               .then(() => {
@@ -114,8 +117,8 @@ const Register = () => {
                 <p className="mb-1 font-medium">Select Role:</p>
               </label>
               <select {...register("role")} name="role" className="block w-full px-4 py-3 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" id="role">
-                <option defaultValue="Buyer" value="Buyer">Buyer</option>
-                <option value="Seller">Seller</option>
+                <option defaultValue="Buyer" value="Buyer">buyer</option>
+                <option value="Seller">seller</option>
               </select>
             </div>
             <div className="mt-6">

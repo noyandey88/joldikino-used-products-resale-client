@@ -79,7 +79,7 @@ const Navbar = () => {
                 <button onClick={handleLogout} className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none btn btn-primary">Logout</button>
                 {
                   user?.photoURL ?
-                    <img src={user?.photoURL} alt="user" />
+                    <img className="w-12" src={user?.photoURL} alt="user" />
                     :
                     <UserCircleIcon className="h-12 w-12 text-sky-500" title={user?.displayName} />
                 }
@@ -159,7 +159,7 @@ const Navbar = () => {
                           <button onClick={handleLogout} className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none btn btn-primary">Logout</button>
                           {
                             user?.photoURL ?
-                              <img src={user?.photoURL} alt="user" />
+                              <img className="w-12" src={user?.photoURL} alt="user" />
                               :
                               <UserCircleIcon className="h-12 w-12 text-sky-500" title={user?.displayName} />
                           }
