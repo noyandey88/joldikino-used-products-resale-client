@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
   return (
@@ -17,13 +18,13 @@ const Banner = () => {
               </p>
             </div>
             <div className="flex flex-col md:flex-row">
-              <a
-                href="/"
+              <Link
+                to="/"
                 aria-label=""
                 className="inline-flex items-center font-semibold text-white transition-colors duration-200 hover:text-deep-purple-accent-700 btn btn-primary"
               >
                 Learn more
-              </a>
+              </Link>
             </div>
           </div>
         </div>
