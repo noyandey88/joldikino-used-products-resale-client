@@ -1,8 +1,8 @@
 import { UserIcon } from '@heroicons/react/24/solid';
 import React from 'react';
 
-const Buyer = ({ buyer }) => {
-  const { name, email } = buyer;
+const Buyer = ({ buyer, handleDeleteBuyer }) => {
+  const { _id, name, email } = buyer;
   return (
     <div className="bg-gray-100/20 my-2 rounded-md flex justify-between items-center p-2 shadow-md">
       <div className="flex gap-4 items-center">
@@ -16,8 +16,8 @@ const Buyer = ({ buyer }) => {
       </div>
 
       <div className="flex gap-4 items-center">
-        <button className="btn btn-sm lg:btn-md btn-success text-white">Verify</button>
-        <button className="btn btn-sm lg:btn-md btn-warning">Delete</button>
+        {/* <button className="btn btn-sm lg:btn-md btn-success text-white">Verify</button> */}
+        <button onClick={() => handleDeleteBuyer(_id)} className="btn btn-sm lg:btn-md btn-warning">Delete</button>
       </div>
     </div>
   );

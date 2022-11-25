@@ -14,10 +14,10 @@ const Seller = ({ seller, handleVerifySeller }) => {
           <p className="text-sm lg:text-base font-medium">Status:
             {
               isVerified ?
-                <div className="inline-flex gap-2">
+                <span className="inline-flex gap-2">
                   <span>Verified</span>
                   <CheckCircleIcon className="w-6 h-6 text-blue-500" />
-                </div> :
+                </span> :
                 <span>Not Verified</span>
             }
           </p>
