@@ -21,6 +21,7 @@ const AddProduct = () => {
     const category = data.category;
     const condition = data.condition;
     const postedOn = today;
+    const description = data.description;
 
     saveImage(image)
       .then(data => {
@@ -37,7 +38,10 @@ const AddProduct = () => {
           postedOn: postedOn,
           condition: condition,
           sellerEmail: user?.email,
-          sellerName: user?.displayName
+          sellerName: user?.displayName,
+          isAdvertised: false,
+          stock: 'available',
+          description: description
         }
 
         console.log(product);
@@ -68,7 +72,7 @@ const AddProduct = () => {
   return (
     <div className="w-full px-2 lg:px-0 lg:w-3/4 mx-auto mb-6">
       <div className="text-center mt-4 mb-4">
-        <h1 className="text-4xl fon-semibold">Add A Product</h1>
+        <h1 className="text-2xl lg:text-4xl underline fon-semibold">Add A Product</h1>
       </div>
       <div>
         <form onSubmit={handleSubmit(handleAddProduct)}>
@@ -122,6 +126,10 @@ const AddProduct = () => {
               <option value="Good">Good</option>
               <option value="Fair">Fair</option>
             </select>
+          </div>
+          <div className="w-full">
+            <p className="text-sm mb-2 mt-2 font-medium">Write a short description:</p>
+            <textarea {...register("description")} name="description" cols="30" rows="4" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"></textarea>
           </div>
           <div className="w-full mt-2">
             <button className="btn btn-primary w-full" type="submit">Add Product</button>

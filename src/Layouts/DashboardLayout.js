@@ -32,7 +32,7 @@ const DashboardLayout = () => {
           <div className="my-2 flex items-center gap-4">
             {
               user?.photoURL ?
-                <img className="w-20" src={user?.photoURL} alt="" />
+                <img className="w-20 h-20 object-cover" src={user?.photoURL} alt="" />
                 :
                 <UserCircleIcon className="h-20 w-20 text-sky-500" title={user?.displayName} />
             }

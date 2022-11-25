@@ -16,7 +16,7 @@ const Register = () => {
     const password = data.password;
     const image = data.image[0];
     const role = data.role;
-    console.log(image);
+    console.log(role);
     const formData = new FormData();
     formData.append('image', image);
     const url = `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_IMGBB_KEY}`;
@@ -76,7 +76,7 @@ const Register = () => {
               <input {...register("name", {
                 required: "Name is required"
               })}
-                type="text" className="block w-full py-3 text-gray-700 bg-white border rounded-md px-4 focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Name" />
+                type="text" name="name" className="block w-full py-3 text-gray-700 bg-white border rounded-md px-4 focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" placeholder="Name" />
             </div>
             {errors.name && <p className="mt-1 text-red-500 font-semibold">{errors.name?.message}</p>}
             {/* Photo */}
@@ -116,9 +116,9 @@ const Register = () => {
               <label htmlFor="role">
                 <p className="mb-1 font-medium">Select Role:</p>
               </label>
-              <select {...register("role")} name="role" className="block w-full px-4 py-3 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" id="role">
-                <option defaultValue="Buyer" value="Buyer">buyer</option>
-                <option value="Seller">seller</option>
+              <select {...register("role")} defaultValue="buyer" name="role" className="block w-full px-4 py-3 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" id="role">
+                <option value="buyer">buyer</option>
+                <option value="seller">seller</option>
               </select>
             </div>
             <div className="mt-6">
