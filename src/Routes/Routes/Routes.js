@@ -5,6 +5,9 @@ import Main from "../../Layouts/Main";
 import MyProducts from "../../Pages/Dashboard/MyProducts";
 import Welcome from "../../Pages/Dashboard/Welcome";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
+import Action from "../../Pages/Home/Categories/Action";
+import Dslr from "../../Pages/Home/Categories/Dslr";
+import Mirrorless from "../../Pages/Home/Categories/Mirrorless";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import Register from "../../Pages/Register/Register";
@@ -21,13 +24,25 @@ export const router = createBrowserRouter([
         element: <Home></Home>
       },
       {
+        path: '/dslr',
+        element: <Dslr></Dslr>
+      },
+      {
+        path: '/mirrorless',
+        element: <Mirrorless></Mirrorless>
+      },
+      {
+        path: '/action',
+        element: <Action></Action>
+      },
+      {
         path: '/login',
         element: <Login></Login>
       },
       {
         path: '/register',
         element: <Register></Register>
-      },      
+      },
     ]
   },
   {

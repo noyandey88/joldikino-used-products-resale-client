@@ -12,7 +12,7 @@ const Categories = () => {
       </div>
       <div className="my-8 grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* DSLR Cameras */}
-        <Link to="/" className="group relative block bg-black">
+        <Link to="/dslr" className="group relative block bg-black">
           <img
             alt="Developer"
             src={dslr}
@@ -38,7 +38,7 @@ const Categories = () => {
           </div>
         </Link>
         {/* Mirrorless cameras */}
-        <Link to="/" className="group relative block bg-black">
+        <Link to="/mirrorless" className="group relative block bg-black">
           <img
             alt="Developer"
             src={mirrorless}
@@ -64,7 +64,7 @@ const Categories = () => {
           </div>
         </Link>
         {/* Action Cameras */}
-        <Link to="/" className="group relative block bg-black">
+        <Link to="/action" className="group relative block bg-black">
           <img
             alt="Developer"
             src={action}
