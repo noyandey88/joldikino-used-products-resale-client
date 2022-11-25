@@ -1,7 +1,7 @@
 import { UserIcon } from '@heroicons/react/24/solid';
 import React from 'react';
 
-const Seller = ({ seller }) => {
+const Seller = ({ seller, handleVerifySeller }) => {
   const { name, isVerified, email } = seller;
   return (
     <div className="bg-gray-100/20 my-2 rounded-md flex justify-between items-center p-2 shadow-md">
@@ -16,7 +16,7 @@ const Seller = ({ seller }) => {
       </div>
 
       <div className="flex gap-4 items-center">
-        <button className="btn btn-sm lg:btn-md btn-success text-white">Verify</button>
+        <button onClick={()=> handleVerifySeller(seller)} className="btn btn-sm lg:btn-md btn-success text-white">Verify</button>
         <button className="btn btn-sm lg:btn-md btn-warning">Delete</button>
       </div>
     </div>

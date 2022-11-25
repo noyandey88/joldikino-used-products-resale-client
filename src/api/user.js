@@ -12,7 +12,7 @@ export const getUserRole = async (email) => {
 
 // Vefify user
 export const verifyUser = async (user) => {
-  
+  // delete user id
   delete user._id;
 
   const url = `${process.env.REACT_APP_API_URL}/user/${user?.email}`;
@@ -20,7 +20,7 @@ export const verifyUser = async (user) => {
     method: 'PUT',
     headers: {
       'content-type': 'application/json',
-      authorization: `bearer ${localStorage.getItem('aircnc-token')}`
+      authorization: `bearer ${localStorage.getItem('joldikino-token')}`
     },
     body: JSON.stringify({...user, isVerified: true})
   })
