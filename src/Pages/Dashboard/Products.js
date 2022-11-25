@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Products = ({ product }) => {
+const Products = ({ product, handleAdvertise }) => {
   const { productName, productImage, stock, isAdvertised } = product;
   return (
     <div className="bg-gray-100/20 my-2 rounded-md flex justify-between items-center p-2 shadow-md">
@@ -14,7 +14,7 @@ const Products = ({ product }) => {
       </div>
 
       <div className="flex gap-4 items-center">
-        <button className="btn btn-sm lg:btn-md btn-success text-white">Advertise</button>
+        <button onClick={() => handleAdvertise(product)} className="btn btn-sm lg:btn-md btn-success text-white">Advertise</button>
         <button className="btn btn-sm lg:btn-md btn-warning">Delete</button>
       </div>
     </div>

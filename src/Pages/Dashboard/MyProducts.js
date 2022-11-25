@@ -1,5 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import toast from 'react-hot-toast';
+import { addToAdvertise, updateAdvertiseStatus } from '../../api/product';
 import { AuthContext } from '../../contexts/AuthProvider';
 import Products from './Products';
 
@@ -18,7 +20,24 @@ const MyProducts = () => {
     }
   });
 
-  console.log(products);
+  const handleAdvertise = (productInfo) => {
+    console.log(productInfo);
+    updateAdvertiseStatus(productInfo)
+      .then(data => {
+        console.log(data);
+        // add to advertise collection
+        addToAdvertise(productInfo)
+          .then(data => {
+            console.log(data);
+            toast.success('Product Advertised Successfully');
+          }).catch(error => {
+            console.error(error);
+            toast.error(error.message);
+          })
+      }).catch(error => {
+        console.log(error);
+      })
+  }
 
   return (
     <div>
@@ -32,6 +51,7 @@ const MyProducts = () => {
               products.map(product => <Products
                 key={product._id}
                 product={product}
+                handleAdvertise={handleAdvertise}
               ></Products>)
             }
           </div>
