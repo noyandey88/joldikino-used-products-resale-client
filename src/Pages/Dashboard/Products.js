@@ -14,7 +14,7 @@ const Products = ({ product, handleAdvertise, handleDeleteProduct }) => {
       </div>
 
       <div className="flex gap-4 items-center">
-        <button onClick={() => handleAdvertise(product)} className="btn btn-sm lg:btn-md btn-success text-white">Advertise</button>
+        {isAdvertised || <button onClick={() => handleAdvertise(product)} className="btn btn-sm lg:btn-md btn-success text-white">Advertise</button>}
         <button onClick={()=> handleDeleteProduct(_id)} className="btn btn-sm lg:btn-md btn-warning">Delete</button>
       </div>
     </div>
