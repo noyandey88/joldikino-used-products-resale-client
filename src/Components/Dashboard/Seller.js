@@ -1,8 +1,8 @@
 import { CheckCircleIcon, UserIcon } from '@heroicons/react/24/solid';
 import React from 'react';
 
-const Seller = ({ seller, handleVerifySeller }) => {
-  const { name, isVerified, email } = seller;
+const Seller = ({ seller, handleVerifySeller, handleDeleteSeller }) => {
+  const { _id, name, isVerified, email } = seller;
   return (
     <div className="bg-gray-100/20 my-2 rounded-md flex justify-between items-center p-2 shadow-md">
       <div className="flex gap-4 items-center">
@@ -26,7 +26,7 @@ const Seller = ({ seller, handleVerifySeller }) => {
 
       <div className="flex gap-4 items-center">
         <button onClick={() => handleVerifySeller(seller)} className="btn btn-sm lg:btn-md btn-success text-white">Verify</button>
-        <button className="btn btn-sm lg:btn-md btn-warning">Delete</button>
+        <button onClick={()=> handleDeleteSeller(_id)} className="btn btn-sm lg:btn-md btn-warning">Delete</button>
       </div>
     </div>
   );

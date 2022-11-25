@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import toast from 'react-hot-toast';
-import { verifyUser } from '../../api/user';
+import { deleteSavedUser, verifyUser } from '../../api/user';
 import Seller from '../../Components/Dashboard/Seller';
 
 const AllSellers = () => {
@@ -29,6 +29,19 @@ const AllSellers = () => {
         console.error(error);
         toast.error(error.message);
       })
+  };
+
+  const handleDeleteSeller = (id) => {
+    console.log(id);
+    deleteSavedUser(id)
+      .then(data => {
+        console.log(data);
+        refetch();
+        toast.success('Seller Deleted Successfully');
+      }).catch(error => {
+        console.log(error);
+        toast.error(error.message);
+      })
   }
 
   return (
@@ -38,6 +51,7 @@ const AllSellers = () => {
           key={seller._id}
           seller={seller}
           handleVerifySeller={handleVerifySeller}
+          handleDeleteSeller={handleDeleteSeller}
         ></Seller>)
       }
     </div>
