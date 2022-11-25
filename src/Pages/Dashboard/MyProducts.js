@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { addToAdvertise, updateAdvertiseStatus } from '../../api/product';
+import { addToAdvertise, deleteProduct, updateAdvertiseStatus } from '../../api/product';
 import { AuthContext } from '../../contexts/AuthProvider';
 import Products from './Products';
 
@@ -29,6 +29,7 @@ const MyProducts = () => {
         addToAdvertise(productInfo)
           .then(data => {
             console.log(data);
+            refetch();
             toast.success('Product Advertised Successfully');
           }).catch(error => {
             console.error(error);
@@ -37,6 +38,21 @@ const MyProducts = () => {
       }).catch(error => {
         console.log(error);
       })
+  };
+
+  const handleDeleteProduct = (id) => {
+    // console.log(id);
+    deleteProduct(id)
+    .then(data => {
+      console.log(data);
+      if (data.deletedCount) {
+        refetch();
+        toast.success('Product Deleted Successfully');
+      }
+    }).catch(error => {
+      console.error(error);
+      toast.error(error.message);
+    })
   }
 
   return (
@@ -52,6 +68,7 @@ const MyProducts = () => {
                 key={product._id}
                 product={product}
                 handleAdvertise={handleAdvertise}
+                handleDeleteProduct={handleDeleteProduct}
               ></Products>)
             }
           </div>

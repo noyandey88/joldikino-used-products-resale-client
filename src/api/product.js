@@ -19,8 +19,8 @@ export const addToAdvertise = async (product) => {
 
 // isAdvertise field update
 export const updateAdvertiseStatus = async (product) => {
-  const productId = product._id;
-  const url = `${process.env.REACT_APP_API_URL}/products/${productId}`;
+  const id = product._id;
+  const url = `${process.env.REACT_APP_API_URL}/products/${id}`;
   const response = await fetch(url, {
     method: 'PUT',
     headers: {
@@ -28,6 +28,19 @@ export const updateAdvertiseStatus = async (product) => {
       authorization: `bearer ${localStorage.getItem('joldikino-token')}`
     },
     body: JSON.stringify({ isAdvertised: true })
+  });
+  const data = await response.json();
+  return data;
+}
+
+// delete a product
+export const deleteProduct = async (id) => {
+  const url = `${process.env.REACT_APP_API_URL}/products/${id}`;
+  const response = await fetch(url, {
+    method: 'DELETE',
+    headers: {
+      authorization: `bearer ${localStorage.getItem('joldikino-token')}`
+    }
   });
   const data = await response.json();
   return data;
