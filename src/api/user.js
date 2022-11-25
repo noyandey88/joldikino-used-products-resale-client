@@ -1,3 +1,5 @@
+import axios from "axios";
+
 // get user role
 export const getUserRole = async (email) => {
   const url = `${process.env.REACT_APP_API_URL}/user/${email}`;
@@ -26,4 +28,10 @@ export const verifyUser = async (user) => {
   })
   const users = await response.json();
   return users;
+}
+
+export const sellerVerification = async (email) => {
+  const url = `${process.env.REACT_APP_API_URL}/user/seller/${email}`;
+  const response = await axios.get(url);
+  return response.data?.isVerified;
 }

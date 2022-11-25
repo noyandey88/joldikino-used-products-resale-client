@@ -4,7 +4,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 import Products from './Products';
 
 const MyProducts = () => {
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const { data: products = [], loading, refetch } = useQuery({
     queryKey: ['products', user],
     queryFn: async () => {
@@ -16,17 +16,29 @@ const MyProducts = () => {
       const data = await res.json();
       return data;
     }
-  })
+  });
+
+  console.log(products);
+
   return (
     <div>
       <div>
-        <h2 className="text-2xl">My Products</h2>
+        <h2 className="text-2xl font-bold">My Products</h2>
       </div>
       {
-        products.map(product => <Products
-          key={product._id}
-          product={product}
-        ></Products>)
+        products.length !== 0 ?
+          <div className="mb-8">
+            {
+              products.map(product => <Products
+                key={product._id}
+                product={product}
+              ></Products>)
+            }
+          </div>
+          :
+          <div className="min-h-screen flex justify-center">
+            <h2 className="text-4xl font-semibold">You haven't added any products yet.</h2>
+          </div>
       }
     </div>
   );

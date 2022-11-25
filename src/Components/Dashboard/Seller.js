@@ -1,4 +1,4 @@
-import { UserIcon } from '@heroicons/react/24/solid';
+import { CheckCircleIcon, UserIcon } from '@heroicons/react/24/solid';
 import React from 'react';
 
 const Seller = ({ seller, handleVerifySeller }) => {
@@ -11,12 +11,21 @@ const Seller = ({ seller, handleVerifySeller }) => {
         <div className="space-y-1">
           <p className="text-sm lg:text-base font-medium">Name: <span>{name}</span></p>
           <p className="text-sm lg:text-base font-medium">Email: {email}</p>
-          <p className="text-sm lg:text-base font-medium">Status: <span>{isVerified ? "Verified" : "Not Verified"}</span></p>
+          <p className="text-sm lg:text-base font-medium">Status:
+            {
+              isVerified ?
+                <div className="inline-flex gap-2">
+                  <span>Verified</span>
+                  <CheckCircleIcon className="w-6 h-6 text-blue-500" />
+                </div> :
+                <span>Not Verified</span>
+            }
+          </p>
         </div>
       </div>
 
       <div className="flex gap-4 items-center">
-        <button onClick={()=> handleVerifySeller(seller)} className="btn btn-sm lg:btn-md btn-success text-white">Verify</button>
+        <button onClick={() => handleVerifySeller(seller)} className="btn btn-sm lg:btn-md btn-success text-white">Verify</button>
         <button className="btn btn-sm lg:btn-md btn-warning">Delete</button>
       </div>
     </div>

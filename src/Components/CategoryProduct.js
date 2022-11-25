@@ -1,7 +1,19 @@
-import React from 'react';
+import { CheckCircleIcon } from '@heroicons/react/24/solid';
+import React, { useState } from 'react';
+import { sellerVerification } from '../api/user';
 
 const CategoryProduct = ({ camera }) => {
-  const { productName, originalPrice, resalePrice, productImage, location, postedOn, condition, sellerName, stock, description } = camera;
+  const [isVerified, setIsVerified] = useState(false);
+  const { productName, originalPrice, resalePrice, productImage, location, postedOn, condition, sellerName, stock, description, sellerEmail } = camera;
+
+  sellerVerification(sellerEmail)
+    .then(data => {
+      // console.log(data);
+      setIsVerified(data)
+    }).catch(error => {
+      console.error(error);
+    })
+
   return (
     <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
       <img
@@ -36,7 +48,15 @@ const CategoryProduct = ({ camera }) => {
           <div>
             <p className="font-medium">Condition: {condition}</p>
             <p className="font-medium">Location: {location}</p>
-            <p className="font-medium">Seller: {sellerName}</p>
+            {
+              isVerified ?
+                <div className="flex gap-2 items-center">
+                  <p className="font-medium">Seller: {sellerName}</p>
+                  <CheckCircleIcon className="w-6 h-6 text-blue-500" />
+                </div>
+                :
+                <p className="font-medium">Seller: {sellerName}</p>
+            }
           </div>
         </div>
         <button className="btn btn-primary w-full mt-2">
