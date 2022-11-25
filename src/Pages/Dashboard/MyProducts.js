@@ -8,9 +8,9 @@ import Products from './Products';
 const MyProducts = () => {
   const { user } = useContext(AuthContext)
   const { data: products = [], loading, refetch } = useQuery({
-    queryKey: ['products', user],
+    queryKey: ['products/seller', user],
     queryFn: async () => {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/products?email=${user?.email}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/products/seller?email=${user?.email}`, {
         headers: {
           authorization: `bearer ${localStorage.getItem('joldikino-token')}`
         }
