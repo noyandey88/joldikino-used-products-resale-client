@@ -1,13 +1,14 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { saveUserWithRegister } from '../../api/auth';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Register = () => {
   const { createUser, updateUserProfile, googleLogin, loading } = useContext(AuthContext);
   const { register, formState: { errors }, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
   const handleRegister = (data) => {
     console.log(data);
@@ -30,11 +31,12 @@ const Register = () => {
         createUser(email, password)
           .then((result) => {
             const user = result.user;
-            saveUserWithRegister(user, role);
             // update profile
             updateUserProfile(name, data.data.url)
-              .then(() => {
+            .then(() => {
                 toast.success('User created successfully with name and photo');
+                navigate('/');
+                saveUserWithRegister(user, role);
               })
               .catch(error => {
                 console.error(error);
@@ -56,6 +58,7 @@ const Register = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
+        saveUserWithRegister(user, 'buyer');
         toast.success('Register with Google successful');
       })
       .catch((error) => {

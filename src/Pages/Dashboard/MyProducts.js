@@ -1,12 +1,14 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
+import { AuthContext } from '../../contexts/AuthProvider';
 import Products from './Products';
 
 const MyProducts = () => {
+  const {user} = useContext(AuthContext)
   const { data: products = [], loading, refetch } = useQuery({
-    queryKey: ['products'],
+    queryKey: ['products', user],
     queryFn: async () => {
-      const res = await fetch(`${process.env.REACT_APP_API_URL}/products`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/products?email=${user?.email}`, {
         headers: {
           authorization: `bearer ${localStorage.getItem('joldikino-token')}`
         }

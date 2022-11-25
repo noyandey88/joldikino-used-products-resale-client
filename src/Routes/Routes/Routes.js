@@ -2,7 +2,10 @@ import { createBrowserRouter } from "react-router-dom";
 import AddProduct from "../../Components/Dashboard/AddProduct";
 import DashboardLayout from "../../Layouts/DashboardLayout";
 import Main from "../../Layouts/Main";
+import AllBuyers from "../../Pages/Dashboard/AllBuyers";
+import AllSellers from "../../Pages/Dashboard/AllSellers";
 import MyProducts from "../../Pages/Dashboard/MyProducts";
+import ReportedItems from "../../Pages/Dashboard/ReportedItems";
 import Welcome from "../../Pages/Dashboard/Welcome";
 import ErrorPage from "../../Pages/ErrorPage/ErrorPage";
 import Action from "../../Pages/Home/Categories/Action";
@@ -62,7 +65,18 @@ export const router = createBrowserRouter([
         path: '/dashboard/myproducts',
         element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>
       },
-
+      {
+        path: '/dashboard/allsellers',
+        element: <PrivateRoute><AllSellers></AllSellers></PrivateRoute>
+      },
+      {
+        path: '/dashboard/allbuyers',
+        element: <PrivateRoute><AllBuyers></AllBuyers></PrivateRoute>
+      },
+      {
+        path: '/dashboard/reporteditems',
+        element: <PrivateRoute><ReportedItems></ReportedItems></PrivateRoute>
+      },
     ]
   }
 ])
