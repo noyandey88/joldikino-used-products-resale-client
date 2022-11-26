@@ -1,12 +1,16 @@
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { updateStatusToReported } from '../../../../api/product';
 import { sellerVerification } from '../../../../api/user';
+import { AuthContext } from '../../../../contexts/AuthProvider';
 
 const DslrCamera = ({ camera, setDslrCamera, refetch }) => {
   const [isVerified, setIsVerified] = useState(false);
   const { productName, originalPrice, resalePrice, productImage, location, postedOn, condition, sellerName, stock, description, sellerEmail, used, status } = camera;
+  const { userRole } = useContext(AuthContext);
+
+  console.log(userRole);
 
   sellerVerification(sellerEmail)
     .then(data => {
@@ -72,21 +76,30 @@ const DslrCamera = ({ camera, setDslrCamera, refetch }) => {
             }
           </div>
         </div>
-        <div className="grid grid-cols-2 gap-4 items-center">
-          {
-            stock !== 'booked' ?
-              <label onClick={() => setDslrCamera(camera)} className="btn btn-primary mt-2" htmlFor="book-product">Book</label>
-              :
-              <button className="btn btn-primary btn-disabled">Booked</button>
-          }
-          {/* <button className="btn btn-primary mt-2">Book</button> */}
-          {
-            status !== 'reported' ?
-              <button onClick={handleReportToAdmin} className="btn btn-primary mt-2">Report To Admin</button>
-              :
-              <button className="btn btn-primary btn-disabled">Reported</button>
-          }
-        </div>
+        {
+          userRole !== 'admin' &&
+          <>
+            {
+              userRole !== 'seller' &&
+              <div className="grid grid-cols-2 gap-4 items-center">
+                {
+                  stock !== 'booked' ?
+                    <label onClick={() => setDslrCamera(camera)} className="btn btn-primary mt-2" htmlFor="book-product">Book</label>
+                    :
+                    <button className="btn btn-primary btn-disabled">Booked</button>
+                }
+                {/* <button className="btn btn-primary mt-2">Book</button> */}
+                {
+                  status !== 'reported' ?
+                    <button onClick={handleReportToAdmin} className="btn btn-primary mt-2">Report To Admin</button>
+                    :
+                    <button className="btn btn-primary btn-disabled">Reported</button>
+                }
+              </div>
+            }
+          </>
+        }
+
       </div>
     </div>
   );
