@@ -2,12 +2,13 @@ import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { addToAdvertise, deleteProduct, updateAdvertiseStatus } from '../../api/product';
+import Spinner from '../../Components/Spinner';
 import { AuthContext } from '../../contexts/AuthProvider';
 import Products from './Products';
 
 const MyProducts = () => {
   const { user } = useContext(AuthContext)
-  const { data: products = [], loading, refetch } = useQuery({
+  const { data: products = [], isLoading, refetch } = useQuery({
     queryKey: ['products/seller', user],
     queryFn: async () => {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/products/seller?email=${user?.email}`, {
@@ -43,17 +44,21 @@ const MyProducts = () => {
   const handleDeleteProduct = (id) => {
     // console.log(id);
     deleteProduct(id)
-    .then(data => {
-      console.log(data);
-      if (data.deletedCount) {
-        refetch();
-        toast.success('Product Deleted Successfully');
-      }
-    }).catch(error => {
-      console.error(error);
-      toast.error(error.message);
-    })
-  }
+      .then(data => {
+        console.log(data);
+        if (data.deletedCount) {
+          refetch();
+          toast.success('Product Deleted Successfully');
+        }
+      }).catch(error => {
+        console.error(error);
+        toast.error(error.message);
+      })
+  };
+
+  if (isLoading) {
+  return <Spinner></Spinner>
+}
 
   return (
     <div>

@@ -1,16 +1,22 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import CategoryProduct from '../../../Components/CategoryProduct';
+import Spinner from '../../../Components/Spinner';
 
 const AdvertisedItems = () => {
-  const { data: advertisedProducts = [] } = useQuery({
+  const { data: advertisedProducts = [], isLoading } = useQuery({
     queryKey: ['advertised'],
     queryFn: async () => {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/advertised`);
       const data = await response.json();
       return data;
     }
-  })
+  });
+
+  if (isLoading) {
+    return <Spinner></Spinner>
+  }
+
   return (
     <div>
       <div className="mb-8">
