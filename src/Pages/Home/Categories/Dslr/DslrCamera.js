@@ -1,8 +1,8 @@
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import React, { useState } from 'react';
-import { sellerVerification } from '../api/user';
+import { sellerVerification } from '../../../../api/user';
 
-const CategoryProduct = ({ camera, setDslrCamera }) => {
+const DslrCamera = ({camera, setDslrCamera}) => {
   const [isVerified, setIsVerified] = useState(false);
   const { productName, originalPrice, resalePrice, productImage, location, postedOn, condition, sellerName, stock, description, sellerEmail } = camera;
 
@@ -13,7 +13,6 @@ const CategoryProduct = ({ camera, setDslrCamera }) => {
     }).catch(error => {
       console.error(error);
     })
-
   return (
     <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
       <img
@@ -60,9 +59,7 @@ const CategoryProduct = ({ camera, setDslrCamera }) => {
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4 items-center">
-          <label onClick={() => {
-            setDslrCamera(camera)
-          }} className="btn btn-primary mt-2" htmlFor="book-product">Book</label>
+          <label onClick={()=> setDslrCamera(camera)} className="btn btn-primary mt-2" htmlFor="book-product">Book</label>
           {/* <button className="btn btn-primary mt-2">Book</button> */}
           <button className="btn btn-primary mt-2">Report To Admin</button>
         </div>
@@ -71,4 +68,4 @@ const CategoryProduct = ({ camera, setDslrCamera }) => {
   );
 };
 
-export default CategoryProduct;
+export default DslrCamera;
