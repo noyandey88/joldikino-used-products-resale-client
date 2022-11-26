@@ -8,7 +8,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
-  const { register, handleSubmit } = useForm();
+  const { register, formState: {errors}, handleSubmit } = useForm();
   const navigate = useNavigate();
 
   const today = format(new Date(), 'PP');
@@ -84,63 +84,93 @@ const AddProduct = () => {
 
           <div className="flex gap-2">
             <div className="w-full">
-              <input {...register("name")} type="text" placeholder="Product Name" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+              <input {...register("name", {
+                required: 'Product name is required'
+              })} type="text" placeholder="Product Name" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+              {errors.name && <p className="font-semibold text-red-500">{errors?.name.message}</p>}
             </div>
             <div className="w-full">
-              <input {...register("phone")} type="text" placeholder="Phone Number" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+              <input {...register("phone", {
+                required: 'Phone number is required'
+              })} type="text" placeholder="Phone Number" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+              {errors.phone && <p className="font-semibold text-red-500">{errors?.phone.message}</p>}
             </div>
           </div>
 
           <div className="flex gap-2">
             <div className="w-full">
-              <input {...register("originalPrice")} type="number" placeholder="Original Price" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+              <input {...register("originalPrice", {
+                required: 'Original price is required'
+              })} type="number" placeholder="Original Price" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+              {errors.originalPrice && <p className="font-semibold text-red-500">{errors?.originalPrice.message}</p>}
             </div>
             <div className="w-full">
-              <input {...register("resalePrice")} type="number" placeholder="Resale Price" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+              <input {...register("resalePrice", {
+                required: 'Resale price is required'
+              })} type="number" placeholder="Resale Price" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+              {errors.resalePrice && <p className="font-semibold text-red-500">{errors?.resalePrice.message}</p>}
             </div>
           </div>
 
           {/* image upload */}
           <div className="w-full">
-            <input {...register("image")} type="file" placeholder="Phone Number" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" accept="image/*" />
+            <input {...register("image", {
+              required: 'Product Photo is required'
+            })} type="file" placeholder="Phone Number" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" accept="image/*" />
+            {errors.image && <p className="font-semibold text-red-500">{errors?.image.message}</p>}
           </div>
 
           <div className="flex gap-2">
             <div className="w-full">
               <p className="text-sm -mb-2 mt-2 font-medium">Select Product Location:</p>
-              <select {...register("location")} name="location" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40">
+              <select {...register("location", {
+                required: 'Seller location is required'
+              })} name="location" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40">
                 <option value="Chattogram">Chattogram</option>
                 <option value="Cumilla">Cumilla</option>
                 <option value="Dhaka">Dhaka</option>
                 <option value="Rajshahi">Rajshahi</option>
               </select>
+              {errors.location && <p className="font-semibold text-red-500">{errors?.location.message}</p>}
             </div>
             <div className="w-full">
               <p className="text-sm -mb-2 mt-2 font-medium">Select Product Category:</p>
-              <select {...register("category")} name="category" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40">
+              <select {...register("category", {
+                required: 'Product category is required'
+              })} name="category" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40">
                 <option value="dslr">dslr</option>
                 <option value="mirrorless">mirrorless</option>
                 <option value="action">action</option>
               </select>
+              {errors.category && <p className="font-semibold text-red-500">{errors?.category.message}</p>}
             </div>
           </div>
           <div className="flex gap-2">
             <div className="w-full">
               <p className="text-sm -mb-2 mt-2 font-medium">Select Product Condition:</p>
-              <select {...register("condition")} name="condition" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40">
+              <select {...register("condition", {
+                required: 'Product condition is required'
+              })} name="condition" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40">
                 <option value="Excellent">Excellent</option>
                 <option value="Good">Good</option>
                 <option value="Fair">Fair</option>
               </select>
+              {errors.condition && <p className="font-semibold text-red-500">{errors?.condition.message}</p>}
             </div>
             <div className="w-full">
             <p className="text-sm -mb-2 mt-2 font-medium">Years of use:</p>
-              <input {...register("used")} name="used" type="number" placeholder="Years of use" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+              <input {...register("used", {
+                required: 'Product usage period is required'
+              })} name="used" type="number" placeholder="Years of use" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+              {errors.used && <p className="font-semibold text-red-500">{errors?.used.message}</p>}
             </div>
           </div>
           <div className="w-full">
             <p className="text-sm mb-2 mt-2 font-medium">Write a short description:</p>
-            <textarea {...register("description")} name="description" cols="30" rows="4" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"></textarea>
+            <textarea {...register("description", {
+              required: 'Product description is required'
+            })} name="description" cols="30" rows="4" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40"></textarea>
+            {errors.description && <p className="font-semibold text-red-500">{errors?.description.message}</p>}
           </div>
           <div className="w-full mt-2">
             <button className="btn btn-primary w-full" type="submit">Add Product</button>

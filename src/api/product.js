@@ -61,3 +61,19 @@ export const updateStockStatusBooked = async (product) => {
   const data = await response.json();
   return data;
 }
+
+// update a product stock status to reported
+export const updateStatusToReported = async (product) => {
+  const id = product._id;
+  const url = `${process.env.REACT_APP_API_URL}/products/${id}`;
+  const response = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json',
+      authorization: `bearer ${localStorage.getItem('joldikino-token')}`
+    },
+    body: JSON.stringify({ status: 'reported' })
+  });
+  const data = await response.json();
+  return data;
+}

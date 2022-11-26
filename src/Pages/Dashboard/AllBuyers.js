@@ -3,6 +3,7 @@ import React from 'react';
 import toast from 'react-hot-toast';
 import { deleteSavedUser } from '../../api/user';
 import Buyer from '../../Components/Dashboard/Buyer';
+import Spinner from '../../Components/Spinner';
 
 const AllBuyers = () => {
   const { data: buyers = [], refetch, isLoading } = useQuery({
@@ -29,6 +30,10 @@ const AllBuyers = () => {
         console.log(error);
         toast.error(error.message);
       })
+  };
+
+  if (isLoading) {
+    return <Spinner></Spinner>
   }
 
   return (

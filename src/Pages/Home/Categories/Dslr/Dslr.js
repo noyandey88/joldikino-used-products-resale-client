@@ -27,6 +27,7 @@ const Dslr = () => {
             key={camera._id}
             camera={camera}
             setDslrCamera={setDslrCamera}
+            refetch={refetch}
           ></DslrCamera>)
         }
       </div>
