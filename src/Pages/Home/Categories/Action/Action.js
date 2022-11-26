@@ -1,9 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
-import CategoryProduct from '../../../../Components/CategoryProduct';
 import Spinner from '../../../../Components/Spinner';
-import BookingModal from '../BookingModal';
 import ActionCamera from './ActionCamera';
+import BookActionCamera from './BookActionCamera';
 
 const Action = () => {
   const [actionCamera, setActionCamera] = useState(null);
@@ -33,9 +32,10 @@ const Action = () => {
       </div>
       {
         actionCamera &&
-        <BookingModal
+        <BookActionCamera
             camera={actionCamera}
-        ></BookingModal>
+            setActionCamera={setActionCamera}
+        ></BookActionCamera>
       }
     </div>
   );

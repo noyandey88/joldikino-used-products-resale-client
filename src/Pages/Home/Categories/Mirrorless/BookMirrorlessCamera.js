@@ -1,16 +1,16 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
-import { AuthContext } from '../../../contexts/AuthProvider';
+import { AuthContext } from '../../../../contexts/AuthProvider';
 
-const BookingModal = ({ camera, setDslrCamera }) => {
+const BookMirrorlessCamera = ({camera, setMirrorlessCamera}) => {
   const { register, handleSubmit } = useForm();
   const { user } = useContext(AuthContext);
   const { productName, resalePrice } = camera;
 
   const handleBook = (data) => {
     console.log(data);
+    setMirrorlessCamera(null);
   }
-
   return (
     <div>
       <input type="checkbox" id="book-product" className="modal-toggle" />
@@ -53,7 +53,7 @@ const BookingModal = ({ camera, setDslrCamera }) => {
               </div>
               {/* submit button */}
               <div>
-                <button onClick={()=> setDslrCamera(null)} className="btn btn-primary" type="submit">Book</button>
+                <button className="btn btn-primary" type="submit">Book</button>
               </div>
             </form>
           </div>
@@ -63,4 +63,4 @@ const BookingModal = ({ camera, setDslrCamera }) => {
   );
 };
 
-export default BookingModal;
+export default BookMirrorlessCamera;

@@ -1,8 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
-import CategoryProduct from '../../../../Components/CategoryProduct';
 import Spinner from '../../../../Components/Spinner';
-import BookingModal from '../BookingModal';
+import BookDslrCamera from './BookDslrCamera';
 import DslrCamera from './DslrCamera';
 
 const Dslr = () => {
@@ -33,9 +32,10 @@ const Dslr = () => {
       </div>
       {
         dslrCamera &&
-        <BookingModal
+        <BookDslrCamera
           camera={dslrCamera}
-        ></BookingModal>
+          setDslrCamera={setDslrCamera}
+        ></BookDslrCamera>
       }
     </div>
   );

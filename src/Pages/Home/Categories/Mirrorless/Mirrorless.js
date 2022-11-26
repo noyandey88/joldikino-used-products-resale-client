@@ -1,10 +1,11 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
-import CategoryProduct from '../../../../Components/CategoryProduct';
+import React, { useState } from 'react';
 import Spinner from '../../../../Components/Spinner';
+import BookMirrorlessCamera from './BookMirrorlessCamera';
 import MirrorlessCamera from './MirrorlessCamera';
 
 const Mirrorless = () => {
+  const [mirrorlessCamera, setMirrorlessCamera] = useState(null);
   const { data: cameras = [], isLoading, refetch } = useQuery({
     queryKey: ['products/camera'],
     queryFn: async () => {
@@ -28,6 +29,13 @@ const Mirrorless = () => {
           ></MirrorlessCamera>)
         }
       </div>
+        {
+        mirrorlessCamera &&
+        <BookMirrorlessCamera
+          camera={mirrorlessCamera}
+          setMirrorlessCamera={setMirrorlessCamera}
+        ></BookMirrorlessCamera>
+        }
     </div>
   );
 };
