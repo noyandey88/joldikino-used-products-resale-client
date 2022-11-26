@@ -59,9 +59,10 @@ const CategoryProduct = ({ camera }) => {
             }
           </div>
         </div>
-        <button className="btn btn-primary w-full mt-2">
-          Book
-        </button>
+        <div className="grid grid-cols-2 gap-4">
+          <button className="btn btn-primary mt-2">Book</button>
+          <button className="btn btn-primary mt-2">Report To Admin</button>
+        </div>
       </div>
     </div>
   );
