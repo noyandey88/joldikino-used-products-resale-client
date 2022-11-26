@@ -2,7 +2,7 @@ import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import React, { useState } from 'react';
 import { sellerVerification } from '../../../../api/user';
 
-const MirrorlessCamera = ({camera}) => {
+const MirrorlessCamera = ({ camera }) => {
   const [isVerified, setIsVerified] = useState(false);
   const { productName, originalPrice, resalePrice, productImage, location, postedOn, condition, sellerName, stock, description, sellerEmail } = camera;
 
@@ -35,13 +35,12 @@ const MirrorlessCamera = ({camera}) => {
           {productName}
         </h2>
         <p className="mb-2 text-gray-700">
-          Sed ut perspiciatis unde omnis iste natus error sit sed quia
-          consequuntur magni voluptatem doloremque.
+          {camera?.description.slice(0, 100)}...
         </p>
         <div className="flex justify-between">
           <div>
-            <p className="font-medium">Original Price: {originalPrice}</p>
-            <p className="font-medium">Resale Price: {resalePrice}</p>
+            <p className="font-medium">Original Price: ${originalPrice}</p>
+            <p className="font-medium">Resale Price: ${resalePrice}</p>
             <p className="font-medium">Status: {stock}</p>
           </div>
           <div>

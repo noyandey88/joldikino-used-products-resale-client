@@ -2,12 +2,14 @@ import { format } from 'date-fns/esm';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
 import { saveImage } from '../../api/imageUpload';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const AddProduct = () => {
   const { user } = useContext(AuthContext);
   const { register, handleSubmit } = useForm();
+  const navigate = useNavigate();
 
   const today = format(new Date(), 'PP');
 
@@ -22,6 +24,7 @@ const AddProduct = () => {
     const condition = data.condition;
     const postedOn = today;
     const description = data.description;
+    const used = data.used;
 
     saveImage(image)
       .then(data => {
@@ -41,7 +44,8 @@ const AddProduct = () => {
           sellerName: user?.displayName,
           isAdvertised: false,
           stock: 'available',
-          description: description
+          description: description,
+          used: used,
         }
 
         console.log(product);
@@ -59,6 +63,7 @@ const AddProduct = () => {
             console.log(data);
             if (data.acknowledged) {
               toast.success("Product Added Successfully");
+              navigate('/dashboard/myproducts');
             }
           }).catch(err => {
             console.error(err);
@@ -88,10 +93,10 @@ const AddProduct = () => {
 
           <div className="flex gap-2">
             <div className="w-full">
-              <input {...register("originalPrice")} type="text" placeholder="Original Price" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+              <input {...register("originalPrice")} type="number" placeholder="Original Price" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
             </div>
             <div className="w-full">
-              <input {...register("resalePrice")} type="text" placeholder="Resale Price" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+              <input {...register("resalePrice")} type="number" placeholder="Resale Price" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
             </div>
           </div>
 
@@ -119,13 +124,19 @@ const AddProduct = () => {
               </select>
             </div>
           </div>
-          <div className="w-full">
-            <p className="text-sm -mb-2 mt-2 font-medium">Select Product Condition:</p>
-            <select {...register("condition")} name="category" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40">
-              <option value="Excellent">Excellent</option>
-              <option value="Good">Good</option>
-              <option value="Fair">Fair</option>
-            </select>
+          <div className="flex gap-2">
+            <div className="w-full">
+              <p className="text-sm -mb-2 mt-2 font-medium">Select Product Condition:</p>
+              <select {...register("condition")} name="condition" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40">
+                <option value="Excellent">Excellent</option>
+                <option value="Good">Good</option>
+                <option value="Fair">Fair</option>
+              </select>
+            </div>
+            <div className="w-full">
+            <p className="text-sm -mb-2 mt-2 font-medium">Years of use:</p>
+              <input {...register("used")} name="used" type="number" placeholder="Years of use" className="block w-full px-5 py-3 mt-2 text-gray-700 placeholder-gray-400 bg-white border-2 border-gray-300 rounded-md dark:placeholder-gray-600 focus:border-blue-400 dark:focus:border-blue-400 focus:ring-blue-400 focus:outline-none focus:ring focus:ring-opacity-40" />
+            </div>
           </div>
           <div className="w-full">
             <p className="text-sm mb-2 mt-2 font-medium">Write a short description:</p>

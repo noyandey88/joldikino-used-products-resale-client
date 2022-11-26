@@ -1,14 +1,40 @@
+import { format } from 'date-fns/esm';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { saveBooking } from '../../../../api/bookingApi';
 import { AuthContext } from '../../../../contexts/AuthProvider';
 
-const BookActionCamera = ({camera, setActionCamera}) => {
+const BookActionCamera = ({ camera, setActionCamera }) => {
   const { register, handleSubmit } = useForm();
   const { user } = useContext(AuthContext);
-  const { productName, resalePrice } = camera;
+  const { productName, resalePrice, productImage, sellerEmail } = camera;
 
   const handleBook = (data) => {
-    console.log(data);
+    const bookingInfo = {
+      buyerName: data.name,
+      buyerEmail: data.email,
+      buyerPhone: data.phone,
+      buyerLocation: data.location,
+      itemName: data.itemName,
+      itemPrice: data.price,
+      itemImage: productImage,
+      bookingDate: format(new Date(), 'PP'),
+      sellerEmail: sellerEmail
+    };
+    console.log(bookingInfo);
+    // save bookings
+    saveBooking(bookingInfo)
+      .then(data => {
+        console.log(data);
+        if (data.acknowledged) {
+          toast.success('Product Booked Successfully');
+        }
+      }).catch(error => {
+        console.log(error);
+        toast.error(error.message);
+      })
+    // close modal
     setActionCamera(null);
   }
   return (
