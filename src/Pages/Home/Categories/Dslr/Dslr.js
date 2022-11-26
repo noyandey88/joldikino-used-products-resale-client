@@ -34,7 +34,8 @@ const Dslr = () => {
         dslrCamera &&
         <BookDslrCamera
           camera={dslrCamera}
-          setDslrCamera={setDslrCamera}
+            setDslrCamera={setDslrCamera}
+            refetch={refetch}
         ></BookDslrCamera>
       }
     </div>

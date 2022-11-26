@@ -3,9 +3,10 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { saveBooking } from '../../../../api/bookingApi';
+import { updateStockStatusBooked } from '../../../../api/product';
 import { AuthContext } from '../../../../contexts/AuthProvider';
 
-const BookActionCamera = ({ camera, setActionCamera }) => {
+const BookActionCamera = ({ camera, setActionCamera, refetch }) => {
   const { register, handleSubmit } = useForm();
   const { user } = useContext(AuthContext);
   const { productName, resalePrice, productImage, sellerEmail } = camera;
@@ -28,7 +29,15 @@ const BookActionCamera = ({ camera, setActionCamera }) => {
       .then(data => {
         console.log(data);
         if (data.acknowledged) {
-          toast.success('Product Booked Successfully');
+          updateStockStatusBooked(camera)
+            .then(data => {
+              console.log(data);
+              toast.success('Product Booked Successfully');
+              refetch();
+            }).catch(error => {
+              console.error(error);
+              toast.error(error.message);
+            })
         }
       }).catch(error => {
         console.log(error);
@@ -79,7 +88,7 @@ const BookActionCamera = ({ camera, setActionCamera }) => {
               </div>
               {/* submit button */}
               <div>
-                <button className="btn btn-primary" type="submit">Book</button>
+                <button className="btn btn-primary w-full" type="submit">Book Now</button>
               </div>
             </form>
           </div>

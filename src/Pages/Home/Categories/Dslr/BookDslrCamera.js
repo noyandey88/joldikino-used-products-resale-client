@@ -3,14 +3,15 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { saveBooking } from '../../../../api/bookingApi';
+import { updateStockStatusBooked } from '../../../../api/product';
 import { AuthContext } from '../../../../contexts/AuthProvider';
 
-const BookDslrCamera = ({ camera, setDslrCamera }) => {
+const BookDslrCamera = ({ camera, setDslrCamera, refetch }) => {
   const { register, handleSubmit } = useForm();
   const { user } = useContext(AuthContext);
   const { productName, resalePrice, productImage, sellerEmail } = camera;
 
-  const handleBook = (data) => { 
+  const handleBook = (data) => {
     // booking data
     const bookingInfo = {
       buyerName: data.name,
@@ -29,7 +30,15 @@ const BookDslrCamera = ({ camera, setDslrCamera }) => {
       .then(data => {
         console.log(data);
         if (data.acknowledged) {
-          toast.success('Product Booked Successfully');
+          updateStockStatusBooked(camera)
+            .then(data => {
+              console.log(data);
+              toast.success('Product Booked Successfully');
+              refetch();
+            }).catch(error => {
+              console.error(error);
+              toast.error(error.message);
+            })
         }
       }).catch(error => {
         console.log(error);
@@ -79,7 +88,7 @@ const BookDslrCamera = ({ camera, setDslrCamera }) => {
               </div>
               {/* submit button */}
               <div>
-                <button className="btn btn-primary" type="submit">Book</button>
+                <button className="btn btn-primary w-full" type="submit">Book</button>
               </div>
             </form>
           </div>

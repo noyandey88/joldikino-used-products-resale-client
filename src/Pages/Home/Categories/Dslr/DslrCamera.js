@@ -4,7 +4,7 @@ import { sellerVerification } from '../../../../api/user';
 
 const DslrCamera = ({ camera, setDslrCamera }) => {
   const [isVerified, setIsVerified] = useState(false);
-  const { productName, originalPrice, resalePrice, productImage, location, postedOn, condition, sellerName, stock, description, sellerEmail } = camera;
+  const { productName, originalPrice, resalePrice, productImage, location, postedOn, condition, sellerName, stock, description, sellerEmail, used } = camera;
 
   sellerVerification(sellerEmail)
     .then(data => {
@@ -35,7 +35,7 @@ const DslrCamera = ({ camera, setDslrCamera }) => {
           {productName}
         </h2>
         <p className="mb-2 text-gray-700">
-          {camera?.description.slice(0, 100)}...
+          {description.slice(0, 100)}...
         </p>
         <div className="flex justify-between">
           <div>
@@ -58,7 +58,12 @@ const DslrCamera = ({ camera, setDslrCamera }) => {
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4 items-center">
-          <label onClick={() => setDslrCamera(camera)} className="btn btn-primary mt-2" htmlFor="book-product">Book</label>
+          {
+            stock !== 'booked' ?
+              <label onClick={() => setDslrCamera(camera)} className="btn btn-primary mt-2" htmlFor="book-product">Book</label>
+              :
+              <button className="btn btn-primary btn-disabled">Booked</button>
+          }
           {/* <button className="btn btn-primary mt-2">Book</button> */}
           <button className="btn btn-primary mt-2">Report To Admin</button>
         </div>

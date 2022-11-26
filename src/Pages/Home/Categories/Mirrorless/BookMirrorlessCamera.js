@@ -3,9 +3,10 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { saveBooking } from '../../../../api/bookingApi';
+import { updateStockStatusBooked } from '../../../../api/product';
 import { AuthContext } from '../../../../contexts/AuthProvider';
 
-const BookMirrorlessCamera = ({ camera, setMirrorlessCamera }) => {
+const BookMirrorlessCamera = ({ camera, setMirrorlessCamera, refetch }) => {
   const { register, handleSubmit } = useForm();
   const { user } = useContext(AuthContext);
   const { productName, resalePrice, productImage, sellerEmail } = camera;
@@ -29,7 +30,15 @@ const BookMirrorlessCamera = ({ camera, setMirrorlessCamera }) => {
       .then(data => {
         console.log(data);
         if (data.acknowledged) {
-          toast.success('Product Booked Successfully');
+          updateStockStatusBooked(camera)
+            .then(data => {
+              console.log(data);
+              toast.success('Product Booked Successfully');
+              refetch();
+            }).catch(error => {
+              console.error(error);
+              toast.error(error.message);
+            })
         }
       }).catch(error => {
         console.log(error);
@@ -39,10 +48,10 @@ const BookMirrorlessCamera = ({ camera, setMirrorlessCamera }) => {
   }
   return (
     <div>
-      <input type="checkbox" id="book-product" className="modal-toggle" />
+      <input type="checkbox" id="book-mirrorless" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
-          <label htmlFor="book-product" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+          <label htmlFor="book-mirrorless" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
           <h3 className="font-semibold my-2">Booking Item: {productName}</h3>
           {/* booking form */}
           <div>
@@ -79,7 +88,7 @@ const BookMirrorlessCamera = ({ camera, setMirrorlessCamera }) => {
               </div>
               {/* submit button */}
               <div>
-                <button className="btn btn-primary" type="submit">Book</button>
+                <button className="btn btn-primary w-full" type="submit">Book</button>
               </div>
             </form>
           </div>

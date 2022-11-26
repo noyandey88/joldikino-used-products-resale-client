@@ -35,6 +35,7 @@ const Action = () => {
         <BookActionCamera
             camera={actionCamera}
             setActionCamera={setActionCamera}
+            refetch={refetch}
         ></BookActionCamera>
       }
     </div>

@@ -2,7 +2,7 @@ import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import React, { useState } from 'react';
 import { sellerVerification } from '../../../../api/user';
 
-const MirrorlessCamera = ({ camera }) => {
+const MirrorlessCamera = ({ camera, setMirrorlessCamera }) => {
   const [isVerified, setIsVerified] = useState(false);
   const { productName, originalPrice, resalePrice, productImage, location, postedOn, condition, sellerName, stock, description, sellerEmail } = camera;
 
@@ -58,7 +58,12 @@ const MirrorlessCamera = ({ camera }) => {
           </div>
         </div>
         <div className="grid grid-cols-2 gap-4 items-center">
-          <label className="btn btn-primary mt-2" htmlFor="book-product">Book</label>
+          {
+            stock !== 'booked' ?
+              <label onClick={() => setMirrorlessCamera(camera)} className="btn btn-primary mt-2" htmlFor="book-mirrorless">Book</label>
+              :
+              <button className="btn btn-primary btn-disabled">Booked</button>
+          }
           {/* <button className="btn btn-primary mt-2">Book</button> */}
           <button className="btn btn-primary mt-2">Report To Admin</button>
         </div>

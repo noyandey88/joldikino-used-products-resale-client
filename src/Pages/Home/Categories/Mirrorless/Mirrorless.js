@@ -26,6 +26,7 @@ const Mirrorless = () => {
           cameras?.map(camera => <MirrorlessCamera
             key={camera._id}
             camera={camera}
+            setMirrorlessCamera={setMirrorlessCamera}
           ></MirrorlessCamera>)
         }
       </div>
@@ -33,7 +34,8 @@ const Mirrorless = () => {
         mirrorlessCamera &&
         <BookMirrorlessCamera
           camera={mirrorlessCamera}
-          setMirrorlessCamera={setMirrorlessCamera}
+            setMirrorlessCamera={setMirrorlessCamera}
+            refetch={refetch}
         ></BookMirrorlessCamera>
         }
     </div>
