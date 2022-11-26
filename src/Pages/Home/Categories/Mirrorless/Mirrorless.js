@@ -27,6 +27,7 @@ const Mirrorless = () => {
             key={camera._id}
             camera={camera}
             setMirrorlessCamera={setMirrorlessCamera}
+            refetch={refetch}
           ></MirrorlessCamera>)
         }
       </div>

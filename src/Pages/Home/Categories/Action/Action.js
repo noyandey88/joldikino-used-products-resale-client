@@ -27,6 +27,7 @@ const Action = () => {
             key={camera._id}
             camera={camera}
             setActionCamera={setActionCamera}
+            refetch={refetch}
           ></ActionCamera>)
         }
       </div>

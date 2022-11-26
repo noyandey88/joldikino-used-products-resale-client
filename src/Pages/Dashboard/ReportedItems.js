@@ -5,7 +5,7 @@ import { deleteProduct } from '../../api/product';
 import Spinner from '../../Components/Spinner';
 
 const ReportedItems = () => {
-  const { data: items = [], isLoading } = useQuery({
+  const { data: items = [], isLoading, refetch } = useQuery({
     queryKey: ['/reported'],
     queryFn: async () => {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/reported`, {
@@ -24,6 +24,7 @@ const ReportedItems = () => {
     deleteProduct(id)
       .then(data => {
         console.log(data);
+        refetch();
         toast.success('Product Deleted Successfully');
       }).catch(error => {
         console.error(error);

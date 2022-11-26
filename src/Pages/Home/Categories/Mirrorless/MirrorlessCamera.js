@@ -1,10 +1,12 @@
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import React, { useState } from 'react';
+import toast from 'react-hot-toast';
+import { updateStatusToReported } from '../../../../api/product';
 import { sellerVerification } from '../../../../api/user';
 
-const MirrorlessCamera = ({ camera, setMirrorlessCamera }) => {
+const MirrorlessCamera = ({ camera, setMirrorlessCamera, refetch }) => {
   const [isVerified, setIsVerified] = useState(false);
-  const { productName, originalPrice, resalePrice, productImage, location, postedOn, condition, sellerName, stock, description, sellerEmail } = camera;
+  const { productName, originalPrice, resalePrice, productImage, location, postedOn, condition, sellerName, stock, description, sellerEmail, used, status } = camera;
 
   sellerVerification(sellerEmail)
     .then(data => {
@@ -13,6 +15,19 @@ const MirrorlessCamera = ({ camera, setMirrorlessCamera }) => {
     }).catch(error => {
       console.error(error);
     })
+
+  const handleReportToAdmin = () => {
+    updateStatusToReported(camera)
+      .then(data => {
+        console.log(data);
+        refetch();
+        toast.success('Product has been Reported');
+      }).catch(error => {
+        console.error(error);
+        toast.error(error.message);
+      })
+  }
+
   return (
     <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
       <img
@@ -65,7 +80,12 @@ const MirrorlessCamera = ({ camera, setMirrorlessCamera }) => {
               <button className="btn btn-primary btn-disabled">Booked</button>
           }
           {/* <button className="btn btn-primary mt-2">Book</button> */}
-          <button className="btn btn-primary mt-2">Report To Admin</button>
+          {
+            status !== 'reported' ?
+              <button onClick={handleReportToAdmin} className="btn btn-primary mt-2">Report To Admin</button>
+              :
+              <button className="btn btn-primary btn-disabled">Reported</button>
+          }
         </div>
       </div>
     </div>
