@@ -44,14 +44,26 @@ const AdvertisedItem = ({ camera, setAdvertisedProduct, refetch }) => {
           alt=""
         />
         <div className="p-5 border border-t-0">
-          <p className="mb-3 text-xs font-semibold tracking-wide uppercase">
-            <span
-              className="transition-colors duration-200 text-blue-gray-900 hover:text-deep-purple-accent-700"
-            >
-              Posted On
-            </span>
-            <span className="text-gray-600">— {postedOn}</span>
-          </p>
+          <div className="flex justify-between items-center">
+            <p className="mb-3 text-xs font-semibold tracking-wide uppercase">
+              <span
+                className="transition-colors duration-200 text-blue-gray-900 hover:text-deep-purple-accent-700"
+              >
+                Posted On
+              </span>
+              <span className="text-gray-600">— {postedOn}</span>
+            </p>
+            {/* seller info */}
+            {
+              isVerified ?
+                <div className="mb-3 flex gap-2 items-center">
+                  <p className="font-medium text-sm">Seller: {sellerName}</p>
+                  <CheckCircleIcon className="w-6 h-6 text-blue-500" />
+                </div>
+                :
+                <p className="mb-3 font-medium text-sm">Seller: {sellerName}</p>
+            }
+          </div>
           <h2
             className="inline-block mb-3 text-xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"
           >
@@ -69,15 +81,7 @@ const AdvertisedItem = ({ camera, setAdvertisedProduct, refetch }) => {
             <div>
               <p className="font-medium">Condition: {condition}</p>
               <p className="font-medium">Location: {location}</p>
-              {
-                isVerified ?
-                  <div className="flex gap-2 items-center">
-                    <p className="font-medium">Seller: {sellerName}</p>
-                    <CheckCircleIcon className="w-6 h-6 text-blue-500" />
-                  </div>
-                  :
-                  <p className="font-medium">Seller: {sellerName}</p>
-              }
+              <p className="font-medium">Used: {used}</p>
             </div>
           </div>
           {

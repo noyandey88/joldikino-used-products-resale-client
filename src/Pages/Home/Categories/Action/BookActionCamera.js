@@ -9,7 +9,7 @@ import { AuthContext } from '../../../../contexts/AuthProvider';
 const BookActionCamera = ({ camera, setActionCamera, refetch }) => {
   const { register, handleSubmit } = useForm();
   const { user } = useContext(AuthContext);
-  const { productName, resalePrice, productImage, sellerEmail } = camera;
+  const { _id, productName, resalePrice, productImage, sellerEmail } = camera;
 
   const handleBook = (data) => {
     const bookingInfo = {
@@ -21,7 +21,8 @@ const BookActionCamera = ({ camera, setActionCamera, refetch }) => {
       itemPrice: data.price,
       itemImage: productImage,
       bookingDate: format(new Date(), 'PP'),
-      sellerEmail: sellerEmail
+      sellerEmail: sellerEmail,
+      itemId: _id
     };
     console.log(bookingInfo);
 
@@ -51,7 +52,7 @@ const BookActionCamera = ({ camera, setActionCamera, refetch }) => {
     // close modal
     setActionCamera(null);
   }
-  
+
   return (
     <div>
       <input type="checkbox" id="book-product" className="modal-toggle" />

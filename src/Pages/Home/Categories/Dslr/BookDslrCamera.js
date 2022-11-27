@@ -9,7 +9,7 @@ import { AuthContext } from '../../../../contexts/AuthProvider';
 const BookDslrCamera = ({ camera, setDslrCamera, refetch }) => {
   const { register, handleSubmit } = useForm();
   const { user } = useContext(AuthContext);
-  const { productName, resalePrice, productImage, sellerEmail } = camera;
+  const { _id, productName, resalePrice, productImage, sellerEmail } = camera;
 
   const handleBook = (data) => {
     // booking data
@@ -22,10 +22,11 @@ const BookDslrCamera = ({ camera, setDslrCamera, refetch }) => {
       itemPrice: data.price,
       itemImage: productImage,
       bookingDate: format(new Date(), 'PP'),
-      sellerEmail: sellerEmail
+      sellerEmail: sellerEmail,
+      itemId: _id
     };
     console.log(bookingInfo);
-    
+
     if (user === null) {
       return toast.error('Please login to continue');
     }

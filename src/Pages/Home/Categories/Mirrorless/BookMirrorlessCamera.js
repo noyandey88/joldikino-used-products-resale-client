@@ -9,7 +9,7 @@ import { AuthContext } from '../../../../contexts/AuthProvider';
 const BookMirrorlessCamera = ({ camera, setMirrorlessCamera, refetch }) => {
   const { register, handleSubmit } = useForm();
   const { user } = useContext(AuthContext);
-  const { productName, resalePrice, productImage, sellerEmail } = camera;
+  const {_id, productName, resalePrice, productImage, sellerEmail } = camera;
 
   const handleBook = (data) => {
     // booking data
@@ -22,7 +22,8 @@ const BookMirrorlessCamera = ({ camera, setMirrorlessCamera, refetch }) => {
       itemPrice: data.price,
       itemImage: productImage,
       bookingDate: format(new Date(), 'PP'),
-      sellerEmail: sellerEmail
+      sellerEmail: sellerEmail,
+      itemId: _id
     };
     console.log(bookingInfo);
 
