@@ -24,6 +24,11 @@ const BookActionCamera = ({ camera, setActionCamera, refetch }) => {
       sellerEmail: sellerEmail
     };
     console.log(bookingInfo);
+
+    if (user === null) {
+      return toast.error('Please login to continue');
+    }
+
     // save bookings
     saveBooking(bookingInfo)
       .then(data => {

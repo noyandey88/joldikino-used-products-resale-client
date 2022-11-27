@@ -21,9 +21,12 @@ const MirrorlessCamera = ({ camera, setMirrorlessCamera, refetch }) => {
   const handleReportToAdmin = () => {
     updateStatusToReported(camera)
       .then(data => {
-        console.log(data);
-        refetch();
-        toast.success('Product has been Reported');
+        if (data.modifiedCount) {
+          refetch();
+          toast.success('Product has been Reported');
+        } else {
+          toast.error('You need to login to report a product')
+        }
       }).catch(error => {
         console.error(error);
         toast.error(error.message);

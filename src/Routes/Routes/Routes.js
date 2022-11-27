@@ -30,15 +30,15 @@ export const router = createBrowserRouter([
       },
       {
         path: '/dslr',
-        element: <Dslr></Dslr>
+        element: <PrivateRoute><Dslr></Dslr></PrivateRoute>
       },
       {
         path: '/mirrorless',
-        element: <Mirrorless></Mirrorless>
+        element: <PrivateRoute><Mirrorless></Mirrorless></PrivateRoute>
       },
       {
         path: '/action',
-        element: <Action></Action>
+        element: <PrivateRoute><Action></Action></PrivateRoute>
       },
       {
         path: '/login',
