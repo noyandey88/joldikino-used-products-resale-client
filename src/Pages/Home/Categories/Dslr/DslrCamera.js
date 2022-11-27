@@ -8,7 +8,7 @@ import { AuthContext } from '../../../../contexts/AuthProvider';
 const DslrCamera = ({ camera, setDslrCamera, refetch }) => {
   const [isVerified, setIsVerified] = useState(false);
   const { productName, originalPrice, resalePrice, productImage, location, postedOn, condition, sellerName, stock, description, sellerEmail, used, status } = camera;
-  const { userRole } = useContext(AuthContext);
+  const { userRole, user } = useContext(AuthContext);
 
   console.log(userRole);
 
@@ -21,13 +21,14 @@ const DslrCamera = ({ camera, setDslrCamera, refetch }) => {
     });
 
   const handleReportToAdmin = () => {
+    if (!user) {
+      return toast.error('Login to report');
+    }
     updateStatusToReported(camera)
       .then(data => {
         if (data.modifiedCount) {
           refetch();
           toast.success('Product has been Reported');
-        } else {
-          toast.error('You need to login to report a product')
         }
       }).catch(error => {
         console.error(error);

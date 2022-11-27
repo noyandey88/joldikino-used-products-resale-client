@@ -1,12 +1,12 @@
-import { format } from 'date-fns/esm';
+import { format } from 'date-fns';
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { saveBooking } from '../../../../api/bookingApi';
-import { updateStockStatusBooked } from '../../../../api/product';
-import { AuthContext } from '../../../../contexts/AuthProvider';
+import { saveBooking } from '../../../api/bookingApi';
+import { updateStockStatusBooked } from '../../../api/product';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
-const BookActionCamera = ({ camera, setActionCamera, refetch }) => {
+const BookAdvertisedItem = ({ camera, setAdvertisedProduct, refetch }) => {
   const { register, handleSubmit } = useForm();
   const { user } = useContext(AuthContext);
   const { productName, resalePrice, productImage, sellerEmail } = camera;
@@ -49,15 +49,14 @@ const BookActionCamera = ({ camera, setActionCamera, refetch }) => {
         toast.error(error.message);
       })
     // close modal
-    setActionCamera(null);
+    setAdvertisedProduct(null);
   }
-  
   return (
     <div>
-      <input type="checkbox" id="book-product" className="modal-toggle" />
+      <input type="checkbox" id="book-advertisedItem" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box relative">
-          <label htmlFor="book-product" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
+          <label htmlFor="book-advertisedItem" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
           <h3 className="font-semibold my-2">Booking Item: {productName}</h3>
           {/* booking form */}
           <div>
@@ -104,4 +103,4 @@ const BookActionCamera = ({ camera, setActionCamera, refetch }) => {
   );
 };
 
-export default BookActionCamera;
+export default BookAdvertisedItem;

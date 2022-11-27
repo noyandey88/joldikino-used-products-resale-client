@@ -1,11 +1,11 @@
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
-import { updateStatusToReported } from '../../../../api/product';
-import { sellerVerification } from '../../../../api/user';
-import { AuthContext } from '../../../../contexts/AuthProvider';
+import { updateStatusToReported } from '../../../api/product';
+import { sellerVerification } from '../../../api/user';
+import { AuthContext } from '../../../contexts/AuthProvider';
 
-const ActionCamera = ({ camera, setActionCamera, refetch }) => {
+const AdvertisedItem = ({ camera, setAdvertisedProduct, refetch }) => {
   const [isVerified, setIsVerified] = useState(false);
   const { productName, originalPrice, resalePrice, productImage, location, postedOn, condition, sellerName, stock, description, sellerEmail, used, status } = camera;
   const { userRole, user } = useContext(AuthContext);
@@ -34,7 +34,6 @@ const ActionCamera = ({ camera, setActionCamera, refetch }) => {
         toast.error(error.message);
       })
   }
-
   return (
     <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
       <img
@@ -87,7 +86,7 @@ const ActionCamera = ({ camera, setActionCamera, refetch }) => {
               <div className="grid grid-cols-2 gap-4 items-center">
                 {
                   stock !== 'booked' ?
-                    <label onClick={() => setActionCamera(camera)} className="btn btn-primary mt-2" htmlFor="book-product">Book</label>
+                    <label onClick={() => setAdvertisedProduct(camera)} className="btn btn-primary mt-2" htmlFor="book-advertisedItem">Book</label>
                     :
                     <button className="btn btn-primary btn-disabled">Booked</button>
                 }
@@ -107,4 +106,4 @@ const ActionCamera = ({ camera, setActionCamera, refetch }) => {
   );
 };
 
-export default ActionCamera;
+export default AdvertisedItem;
