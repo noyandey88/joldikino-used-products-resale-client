@@ -3,10 +3,11 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { saveUserWithLogin } from '../../api/auth';
+import Spinner from '../../Components/Spinner';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Login = () => {
-  const { loginUser, googleLogin, loading } = useContext(AuthContext);
+  const { loginUser, googleLogin, loading, setLoading } = useContext(AuthContext);
   const { register, formState: { errors }, handleSubmit } = useForm();
   const navigate = useNavigate();
   const location = useLocation();
@@ -24,11 +25,13 @@ const Login = () => {
         console.log(user);
         saveUserWithLogin(user);
         toast.success("Login Successful");
+        setLoading(false);
         navigate(from, { replace: true });
       })
       .catch((error) => {
         console.error(error);
         toast.error(error.message);
+        setLoading(false);
     })
   };
 
@@ -43,6 +46,10 @@ const Login = () => {
         console.error(error);
         toast.error(error.message);
       })
+  };
+
+  if (loading) {
+    return <Spinner></Spinner>
   }
 
   return (

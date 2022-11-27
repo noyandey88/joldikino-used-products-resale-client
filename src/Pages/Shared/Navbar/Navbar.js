@@ -2,10 +2,11 @@ import { SwatchIcon, UserCircleIcon } from '@heroicons/react/24/solid';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
+import Spinner from '../../../Components/Spinner';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const Navbar = () => {
-  const { user, logoutUser } = useContext(AuthContext);
+  const { user, logoutUser, loading, setLoading } = useContext(AuthContext);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navMenu = <>
     <li>
@@ -46,14 +47,20 @@ const Navbar = () => {
   const handleLogout = () => {
     logoutUser()
       .then(() => {
+        setLoading(false);
         toast.success('Logout Successful');
       })
       .catch((error) => {
+        setLoading(false);
         toast.error(error.message);
       })
   };
 
   console.log(user);
+
+  if (loading) {
+    return <Spinner></Spinner>
+  }
 
   return (
     <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-4 lg:px-0">

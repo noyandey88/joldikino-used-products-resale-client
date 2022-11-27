@@ -15,6 +15,7 @@ import Dslr from "../../Pages/Home/Categories/Dslr/Dslr";
 import Mirrorless from "../../Pages/Home/Categories/Mirrorless/Mirrorless";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
+import Payment from "../../Pages/Payment/Payment/Payment";
 import Register from "../../Pages/Register/Register";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
@@ -86,6 +87,15 @@ export const router = createBrowserRouter([
       {
         path: '/dashboard/myorders',
         element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
+      },
+      {
+        path: '/dashboard/payment/:id',
+        loader: ({ params }) => fetch(`${process.env.REACT_APP_API_URL}/bookings/${params.id}`, {
+          headers: {
+            authorization: `bearer ${localStorage.getItem('joldikino-token')}`
+          }
+        }),
+        element: <PrivateRoute><Payment></Payment></PrivateRoute>
       },
     ]
   }

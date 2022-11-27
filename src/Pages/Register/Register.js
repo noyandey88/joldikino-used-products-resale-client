@@ -3,10 +3,11 @@ import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 import { saveUserWithRegister } from '../../api/auth';
+import Spinner from '../../Components/Spinner';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const Register = () => {
-  const { createUser, updateUserProfile, googleLogin, loading } = useContext(AuthContext);
+  const { createUser, updateUserProfile, googleLogin, loading, setLoading } = useContext(AuthContext);
   const { register, formState: { errors }, handleSubmit } = useForm();
   const navigate = useNavigate();
 
@@ -30,11 +31,13 @@ const Register = () => {
         // create a user
         createUser(email, password)
           .then((result) => {
+            setLoading(true);
             const user = result.user;
             // update profile
             updateUserProfile(name, data.data.url)
-            .then(() => {
+              .then(() => {
                 toast.success('User created successfully with name and photo');
+                setLoading(false);
                 navigate('/');
                 saveUserWithRegister(user, role);
               })
@@ -50,6 +53,7 @@ const Register = () => {
           })
       }).catch(error => {
         console.log(error);
+        setLoading(false);
       })
   };
 
@@ -64,7 +68,11 @@ const Register = () => {
       .catch((error) => {
         console.error(error);
         toast.error(error.message);
-    })
+      })
+  };
+
+  if (loading) {
+    return <Spinner></Spinner>
   }
 
   return (

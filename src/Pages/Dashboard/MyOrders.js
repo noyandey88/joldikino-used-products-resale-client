@@ -1,8 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Spinner from '../../Components/Spinner';
 
 const MyOrders = () => {
+  const navigate = useNavigate();
   const { data: orders = [], isLoading } = useQuery({
     queryKey: ['bookings'],
     queryFn: async () => {
@@ -16,9 +18,17 @@ const MyOrders = () => {
     }
   });
 
+
   if (isLoading) {
     return <Spinner></Spinner>
   };
+
+  console.log(orders);
+
+  const handleNavigate = (id) => {
+    navigate(`/dashboard/payment/${id}`);
+    // console.log(id);
+  }
 
   return (
     <div>
@@ -34,12 +44,12 @@ const MyOrders = () => {
                 <th>Image</th>
                 <th>Title</th>
                 <th>Price</th>
-                <th>Action</th>
+                <th>Payment Status</th>
               </tr>
             </thead>
             <tbody>
               {
-                orders.map((order, i) => <tr key={i}>
+                orders.map((order, i) => <tr key={order._id}>
                   <th>{i + 1}</th>
                   <td>
                     <img className="w-12 h-12 object-cover" src={order?.itemImage} alt="orderedImage" />
@@ -47,7 +57,13 @@ const MyOrders = () => {
                   <td>{order?.itemName}</td>
                   <td>${order?.itemPrice}</td>
                   <td>
-                    <button className="btn btn-sm btn-primary">Pay</button>
+                    {
+                      order.itemPrice && !order.paid &&
+                      <button onClick={()=> handleNavigate(order._id)} className="btn btn-sm btn-primary">Pay</button>
+                    }
+                    {
+                      order.itemPrice && order.paid && <p className="text-primary font-bold">Paid</p>
+                    }
                   </td>
                 </tr>)
               }
