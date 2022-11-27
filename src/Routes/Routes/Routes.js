@@ -65,27 +65,27 @@ export const router = createBrowserRouter([
         element: <PrivateRoute><Welcome></Welcome></PrivateRoute>
       },
       {
-        path: '/dashboard/addproduct',
+        path: '/dashboard/seller/addproduct',
         element: <PrivateRoute><AddProduct></AddProduct></PrivateRoute>
       },
       {
-        path: '/dashboard/myproducts',
+        path: '/dashboard/seller/myproducts',
         element: <PrivateRoute><MyProducts></MyProducts></PrivateRoute>
       },
       {
-        path: '/dashboard/allsellers',
+        path: '/dashboard/admin/allsellers',
         element: <PrivateRoute><AllSellers></AllSellers></PrivateRoute>
       },
       {
-        path: '/dashboard/allbuyers',
+        path: '/dashboard/admmin/allbuyers',
         element: <PrivateRoute><AllBuyers></AllBuyers></PrivateRoute>
       },
       {
-        path: '/dashboard/reporteditems',
+        path: '/dashboard/admin/reporteditems',
         element: <PrivateRoute><ReportedItems></ReportedItems></PrivateRoute>
       },
       {
-        path: '/dashboard/myorders',
+        path: '/dashboard/buyer/myorders',
         element: <PrivateRoute><MyOrders></MyOrders></PrivateRoute>
       },
       {
