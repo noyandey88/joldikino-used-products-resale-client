@@ -133,7 +133,7 @@ const Register = () => {
               </select>
             </div>
             <div className="mt-6">
-              <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+              <button className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                 Register
               </button>
               <p className="mt-4 text-center text-gray-600 dark:text-gray-400">or sign in with</p>
@@ -151,7 +151,7 @@ const Register = () => {
             </button>
             <div className="mt-6 text-center ">
               <span>Already have an account?</span>
-              <Link to="/login" className="text-sm text-blue-500 hover:underline dark:text-blue-400 font-medium">
+              <Link to="/login" className="text-sm text-green-500 hover:underline dark:text-green-600 font-medium">
                 Login</Link>
             </div>
           </div>

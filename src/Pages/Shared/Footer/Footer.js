@@ -13,7 +13,7 @@ const Footer = () => {
             title="Company"
             className="inline-flex items-center"
           >
-            <SwatchIcon className="h-6 w-6 text-blue-500" />
+            <SwatchIcon className="h-6 w-6 text-green-500" />
             <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
               JoldiKino
             </span>
@@ -22,10 +22,6 @@ const Footer = () => {
             <p className="text-sm text-gray-800">
               Sed ut perspiciatis unde omnis iste natus error sit voluptatem
               accusantium doloremque laudantium, totam rem aperiam.
-            </p>
-            <p className="mt-4 text-sm text-gray-800">
-              Eaque ipsa quae ab illo inventore veritatis et quasi architecto
-              beatae vitae dicta sunt explicabo.
             </p>
           </div>
         </div>

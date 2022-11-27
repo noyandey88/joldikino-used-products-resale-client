@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const Banner = () => {
   return (
@@ -8,23 +7,14 @@ const Banner = () => {
         <div className="flex flex-col items-start w-full px-4 mx-auto lg:px-0 lg:max-w-screen-xl">
           <div className="mb-16 lg:my-40 lg:max-w-lg lg:pr-5">
             <div className="max-w-xl mb-6">
-              <h2 className="max-w-lg mb-6 font-sans text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl sm:leading-none">
-                Find your right product at JOLDIKINO
+              <h2 className="max-w-lg mb-6 font-sans text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                Are you looking for used cameras?
+                <br />
+                So you are in the right place.
               </h2>
-              <p className="text-base text-gray-700 md:text-lg">
-                Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-                accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
-                quae. explicabo.
+              <p className="text-base text-gray-700 text-justify md:text-lg">
+                We are selling only used camera products which are resale. You can find different kinds of cameras in our website. But now, you can find only three categories of cameras. Our sellers are very polite. So a user can buy camera to contact with a seller.
               </p>
-            </div>
-            <div className="flex flex-col md:flex-row">
-              <Link
-                to="/"
-                aria-label=""
-                className="inline-flex items-center font-semibold text-white transition-colors duration-200 hover:text-deep-purple-accent-700 btn btn-primary"
-              >
-                Learn more
-              </Link>
             </div>
           </div>
         </div>

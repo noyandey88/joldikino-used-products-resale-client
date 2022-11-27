@@ -21,7 +21,7 @@ const Home = () => {
     return <Spinner></Spinner>
   };
 
-  console.log(advertisedItems)
+  console.log(advertisedItems);
 
   return (
     <div>

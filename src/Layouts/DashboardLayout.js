@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { getUserRole } from '../api/user';
 import Sidebar from '../Components/Dashboard/Sidebar';
 import { AuthContext } from '../contexts/AuthProvider';
+import Footer from '../Pages/Shared/Footer/Footer';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
@@ -37,7 +38,7 @@ const DashboardLayout = () => {
                 <UserCircleIcon className="h-20 w-20 text-sky-500" title={user?.displayName} />
             }
             <div>
-              <h2 className="font-medium">User type: <span className="font-bold text-primary capitalize">{userRole}</span></h2>
+              <h2 className="font-medium">User type: <span className="font-bold text-green-600 capitalize">{userRole}</span></h2>
               <p className="font-medium">Name: {user?.displayName}</p>
               <p className="font-medium">Email: {user?.email}</p>
             </div>
@@ -48,6 +49,7 @@ const DashboardLayout = () => {
         </div>
       </div>
       <Outlet></Outlet>
+      <Footer></Footer>
     </div>
   );
 };

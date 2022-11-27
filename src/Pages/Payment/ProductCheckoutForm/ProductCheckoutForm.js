@@ -134,7 +134,7 @@ const ProductCheckoutForm = ({ bookingInfo }) => {
             },
           }}
         />
-        <button className="btn btn-primary btn-sm mt-4" type="submit"
+        <button className="btn btn-sm bg-green-500 hover:bg-green-600 border-0 mt-4" type="submit"
           disabled={!stripe || !clientSecret || paymentProcessing}>
           Pay
         </button>

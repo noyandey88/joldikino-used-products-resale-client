@@ -59,10 +59,10 @@ const MyOrders = () => {
                   <td>
                     {
                       order.itemPrice && !order.paid &&
-                      <button onClick={()=> handleNavigate(order._id)} className="btn btn-sm btn-primary">Pay</button>
+                      <button onClick={()=> handleNavigate(order._id)} className="btn btn-sm bg-green-500 hover:bg-green-600 border-0">Pay</button>
                     }
                     {
-                      order.itemPrice && order.paid && <p className="text-primary font-bold">Paid</p>
+                      order.itemPrice && order.paid && <p className="text-green-600 font-bold">Paid</p>
                     }
                   </td>
                 </tr>)

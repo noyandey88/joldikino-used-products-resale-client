@@ -58,9 +58,9 @@ const ReportedItems = () => {
                     <img className="w-16 h-16 object-cover" src={item.productImage} alt="reportedItemImage" />
                   </th>
                   <td>{item?.productName}</td>
-                  <td><span className="capitalize bg-red-300 px-2 py-1 rounded-md">{item?.status}</span></td>
+                  <td><span className="capitalize bg-red-600/20 px-2 py-1 rounded-md">{item?.status}</span></td>
                   <td>
-                    <button onClick={() => handleDeleteReportedItem(item?._id)} className="btn btn-warning btn-sm">Delete</button>
+                    <button onClick={() => handleDeleteReportedItem(item?._id)} className="btn btn-sm bg-red-500 hover:bg-red-600 border-0">Delete</button>
                   </td>
                 </tr>)
               }

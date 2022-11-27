@@ -173,7 +173,7 @@ const AddProduct = () => {
             {errors.description && <p className="font-semibold text-red-500">{errors?.description.message}</p>}
           </div>
           <div className="w-full mt-2">
-            <button className="btn btn-primary w-full" type="submit">Add Product</button>
+            <button className="btn bg-green-500 hover:bg-green-600 border-0 w-full" type="submit">Add Product</button>
           </div>
         </form>
       </div>

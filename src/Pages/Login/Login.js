@@ -88,7 +88,7 @@ const Login = () => {
             {errors.password && <p className="mt-1 text-red-500 font-medium">{errors.password.message}</p>}
 
             <div className="mt-6">
-              <button type="submit" className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-blue-500 rounded-md hover:bg-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
+              <button type="submit" className="w-full px-6 py-3 text-sm font-medium tracking-wide text-white capitalize transition-colors duration-300 transform bg-green-500 rounded-md hover:bg-green-600 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-50">
                 Login
               </button>
 
@@ -108,7 +108,7 @@ const Login = () => {
 
             <div className="mt-6 text-center ">
               <span>Don't have an account?</span>
-              <Link to="/register" className="text-sm text-blue-500 hover:underline dark:text-blue-400 font-medium">
+              <Link to="/register" className="text-sm text-green-500 hover:underline dark:text-green-600 font-medium">
                 Register
               </Link>
             </div>

@@ -17,7 +17,7 @@ const Buyer = ({ buyer, handleDeleteBuyer }) => {
 
       <div className="flex gap-4 items-center">
         {/* <button className="btn btn-sm lg:btn-md btn-success text-white">Verify</button> */}
-        <button onClick={() => handleDeleteBuyer(_id)} className="btn btn-sm lg:btn-md btn-warning">Delete</button>
+        <button onClick={() => handleDeleteBuyer(_id)} className="btn btn-sm lg:btn-md bg-red-500 hover:bg-red-600 border-0">Delete</button>
       </div>
     </div>
   );

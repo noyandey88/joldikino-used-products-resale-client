@@ -71,7 +71,7 @@ const Navbar = () => {
           title="Company"
           className="inline-flex items-center"
         >
-          <SwatchIcon className="h-6 w-6 text-sky-500" />
+          <SwatchIcon className="h-8 w-8 text-green-500" />
           <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
             JoldiKino
           </span>
@@ -82,20 +82,12 @@ const Navbar = () => {
         <ul className="flex items-center hidden space-x-8 lg:flex">
           {
             user?.uid ?
-              <div className="flex gap-4 items-center">
-                <button onClick={handleLogout} className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none btn btn-primary">Logout</button>
-                {
-                  user?.photoURL ?
-                    <img className="w-12" src={user?.photoURL} alt="user" />
-                    :
-                    <UserCircleIcon className="h-12 w-12 text-sky-500" title={user?.displayName} />
-                }
-              </div>
+                <button onClick={handleLogout} className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md btn bg-green-500 border-0 hover:bg-green-600">Logout</button>
               :
               <li>
                 <Link
                   to="/login"
-                  className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none btn btn-primary"
+                  className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md btn bg-green-500 border-0 hover:bg-green-600"
                 >
                   Login
                 </Link>
@@ -135,7 +127,7 @@ const Navbar = () => {
                       title="Company"
                       className="inline-flex items-center"
                     >
-                      <SwatchIcon className="h-6 w-6 text-sky-500" />
+                      <SwatchIcon className="h-6 w-6 text-green-500" />
                       <span className="ml-2 text-xl font-bold tracking-wide text-gray-800 uppercase">
                         JoldiKino
                       </span>
@@ -163,19 +155,13 @@ const Navbar = () => {
                     {
                       user?.uid ?
                         <div className="flex gap-4 items-center">
-                          <button onClick={handleLogout} className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none btn btn-primary">Logout</button>
-                          {
-                            user?.photoURL ?
-                              <img className="w-12" src={user?.photoURL} alt="user" />
-                              :
-                              <UserCircleIcon className="h-12 w-12 text-sky-500" title={user?.displayName} />
-                          }
+                          <button onClick={handleLogout} className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md btn bg-green-500 hover:bg-green-600 border-0">Logout</button>
                         </div>
                         :
                         <li>
                           <Link
                             to="/login"
-                            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none btn btn-primary"
+                            className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md btn bg-green-500 hover:bg-green-600 border-0"
                           >
                             Login
                           </Link>

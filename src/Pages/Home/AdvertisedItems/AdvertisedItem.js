@@ -92,16 +92,16 @@ const AdvertisedItem = ({ camera, setAdvertisedProduct, refetch }) => {
                 <div className="grid grid-cols-2 gap-4 items-center">
                   {
                     stock !== 'booked' ?
-                      <label onClick={() => setAdvertisedProduct(camera)} className="btn btn-primary mt-2" htmlFor="book-advertisedItem">Book</label>
+                      <label onClick={() => setAdvertisedProduct(camera)} className="btn bg-green-500 hover:bg-green-600 border-0 mt-2" htmlFor="book-advertisedItem">Book</label>
                       :
-                      <button className="btn btn-primary btn-disabled">Booked</button>
+                      <button className="mt-2 btn text-gray-200 bg-green-500 hover:bg-green-600 border-0 btn-disabled">Booked</button>
                   }
                   {/* <button className="btn btn-primary mt-2">Book</button> */}
                   {
                     status !== 'reported' ?
-                      <button onClick={handleReportToAdmin} className="btn btn-primary mt-2">Report To Admin</button>
+                      <button onClick={handleReportToAdmin} className="btn bg-green-500 hover:bg-green-600 border-0 mt-2">Report To Admin</button>
                       :
-                      <button className="btn btn-primary btn-disabled">Reported</button>
+                      <button className="mt-2 btn bg-green-500 hover:bg-green-600 border-0 text-gray-200 btn-disabled">Reported</button>
                   }
                 </div>
               }

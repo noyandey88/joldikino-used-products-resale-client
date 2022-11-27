@@ -26,9 +26,9 @@ const Seller = ({ seller, handleVerifySeller, handleDeleteSeller }) => {
 
       <div className="flex gap-4 items-center">
         {
-          isVerified || <button onClick={() => handleVerifySeller(seller)} className="btn btn-sm lg:btn-md btn-success text-white">Verify</button>
+          isVerified || <button onClick={() => handleVerifySeller(seller)} className="btn btn-sm lg:btn-md bg-green-500 hover:bg-green-600 border-0 text-white">Verify</button>
         }
-        <button onClick={()=> handleDeleteSeller(_id)} className="btn btn-sm lg:btn-md btn-warning">Delete</button>
+        <button onClick={()=> handleDeleteSeller(_id)} className="btn btn-sm lg:btn-md bg-red-500 hover:bg-red-600 first:border-0">Delete</button>
       </div>
     </div>
   );

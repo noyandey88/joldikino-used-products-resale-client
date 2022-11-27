@@ -77,7 +77,7 @@ export const router = createBrowserRouter([
         element: <PrivateRoute><AllSellers></AllSellers></PrivateRoute>
       },
       {
-        path: '/dashboard/admmin/allbuyers',
+        path: '/dashboard/admin/allbuyers',
         element: <PrivateRoute><AllBuyers></AllBuyers></PrivateRoute>
       },
       {
