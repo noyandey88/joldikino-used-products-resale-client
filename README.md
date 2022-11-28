@@ -4,7 +4,10 @@
 
 ### **Live Website:** **<https://joldikino-assignment.web.app/>**
 
-    This is a used products resale website. In this website i have implemented Admin, Seller, Buyer role. A buyer can buy product and report to admin for a product. A seller can add products for sale. An admin can delete a user, a buyer and reported products.
+This is a used products resale website. In this website i have implemented Admin, Seller, Buyer role. A buyer can buy product and report to admin for a product. A seller can add products for sale. An admin can delete a user, a buyer and reported products.
+
+### Admin Email: admin@noyan.cm
+### Admin Password: 123456
 
 ### Technologies i used in this project:
 
