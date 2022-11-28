@@ -102,7 +102,7 @@ const BookMirrorlessCamera = ({ camera, setMirrorlessCamera, refetch }) => {
               </div>
               {/* submit button */}
               <div>
-                <button className="btn btn-primary w-full" type="submit">Book</button>
+                <button className="btn bg-green-500 hover:bg-green-600 border-0 w-full" type="submit">Book</button>
               </div>
             </form>
           </div>

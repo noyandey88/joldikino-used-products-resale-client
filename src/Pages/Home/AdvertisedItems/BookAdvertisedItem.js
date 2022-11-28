@@ -100,7 +100,7 @@ const BookAdvertisedItem = ({ camera, setAdvertisedProduct, refetch }) => {
               </div>
               {/* submit button */}
               <div>
-                <button className="btn btn-primary w-full" type="submit">Book Now</button>
+                <button className="btn bg-green-500 hover:bg-green-600 border-0 w-full" type="submit">Book Now</button>
               </div>
             </form>
           </div>

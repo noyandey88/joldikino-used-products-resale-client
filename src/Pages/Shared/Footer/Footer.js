@@ -30,25 +30,25 @@ const Footer = () => {
           </p>
           <div className="flex">
             <p className="mr-1 text-gray-800">Phone:</p>
-            <a
-              href="tel:850-123-5021"
+            <Link
+              to="tel:850-123-5021"
               aria-label="Our phone"
               title="Our phone"
               className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
             >
               +880 9696 4578 9869
-            </a>
+            </Link>
           </div>
           <div className="flex">
             <p className="mr-1 text-gray-800">Email:</p>
-            <a
-              href="mailto:info@lorem.mail"
+            <Link
+              to="mailto:info@lorem.mail"
               aria-label="Our email"
               title="Our email"
               className="transition-colors duration-300 text-deep-purple-accent-400 hover:text-deep-purple-800"
             >
               joldikino@info.com
-            </a>
+            </Link>
           </div>
           <div className="flex">
             <p className="mr-1 text-gray-800">Address:</p>
@@ -70,7 +70,7 @@ const Footer = () => {
           </span>
           <div className="flex items-center mt-1 space-x-3">
             <a
-              href="/"
+              href="https://twitter.com"
               className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
@@ -78,7 +78,7 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="/"
+              href="https://instagram.com"
               className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400"
             >
               <svg viewBox="0 0 30 30" fill="currentColor" className="h-6">
@@ -87,7 +87,7 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="/"
+              href="https://facebook.com"
               className="text-gray-500 transition-colors duration-300 hover:text-deep-purple-accent-400"
             >
               <svg viewBox="0 0 24 24" fill="currentColor" className="h-5">
@@ -103,28 +103,28 @@ const Footer = () => {
         </p>
         <ul className="flex flex-col mb-3 space-y-2 lg:mb-0 sm:space-y-0 sm:space-x-5 sm:flex-row">
           <li>
-            <a
-              href="/"
+            <Link
+              to="/"
               className="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
             >
               F.A.Q
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="/"
+            <Link
+              to="/"
               className="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
             >
               Privacy Policy
-            </a>
+            </Link>
           </li>
           <li>
-            <a
-              href="/"
+            <Link
+              to="/"
               className="text-sm text-gray-600 transition-colors duration-300 hover:text-deep-purple-accent-400"
             >
               Terms &amp; Conditions
-            </a>
+            </Link>
           </li>
         </ul>
       </div>
