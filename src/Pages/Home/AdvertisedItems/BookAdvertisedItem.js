@@ -3,7 +3,7 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { saveBooking } from '../../../api/bookingApi';
-import { updateStockStatusBooked } from '../../../api/product';
+import { updateAdvertiseStatusToFalse, updateStockStatusBooked } from '../../../api/product';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
 const BookAdvertisedItem = ({ camera, setAdvertisedProduct, refetch }) => {
@@ -37,8 +37,15 @@ const BookAdvertisedItem = ({ camera, setAdvertisedProduct, refetch }) => {
           updateStockStatusBooked(camera)
             .then(data => {
               console.log(data);
-              toast.success('Product Booked Successfully');
-              refetch();
+              //update advertise status false
+              updateAdvertiseStatusToFalse(camera)
+                .then(data => {
+                  toast.success('Product Booked Successfully');
+                  refetch();
+                  console.log(data);
+                }).catch(error => {
+                  console.error(error);
+                })
             }).catch(error => {
               console.error(error);
               toast.error(error.message);

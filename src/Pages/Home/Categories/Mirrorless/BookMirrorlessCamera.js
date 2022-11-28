@@ -3,13 +3,13 @@ import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { saveBooking } from '../../../../api/bookingApi';
-import { updateStockStatusBooked } from '../../../../api/product';
+import { updateAdvertiseStatusToFalse, updateStockStatusBooked } from '../../../../api/product';
 import { AuthContext } from '../../../../contexts/AuthProvider';
 
 const BookMirrorlessCamera = ({ camera, setMirrorlessCamera, refetch }) => {
   const { register, handleSubmit } = useForm();
   const { user } = useContext(AuthContext);
-  const {_id, productName, resalePrice, productImage, sellerEmail } = camera;
+  const { _id, productName, resalePrice, productImage, sellerEmail } = camera;
 
   const handleBook = (data) => {
     // booking data
@@ -30,7 +30,7 @@ const BookMirrorlessCamera = ({ camera, setMirrorlessCamera, refetch }) => {
     if (user === null) {
       return toast.error('Please login to continue');
     }
-    
+
     // save bookings
     saveBooking(bookingInfo)
       .then(data => {
@@ -39,8 +39,16 @@ const BookMirrorlessCamera = ({ camera, setMirrorlessCamera, refetch }) => {
           updateStockStatusBooked(camera)
             .then(data => {
               console.log(data);
-              toast.success('Product Booked Successfully');
-              refetch();
+              // toast.success('Product Booked Successfully');
+              // refetch();
+              updateAdvertiseStatusToFalse(camera)
+                .then(data => {
+                  toast.success('Product Booked Successfully');
+                  refetch();
+                  console.log(data);
+                }).catch(error => {
+                  console.error(error);
+                })
             }).catch(error => {
               console.error(error);
               toast.error(error.message);

@@ -92,3 +92,19 @@ export const updateStockStatusSold = async (id) => {
   const data = await response.json();
   return data;
 }
+
+// update is advertised false
+export const updateAdvertiseStatusToFalse = async (product) => {
+  const id = product._id;
+  const url = `${process.env.REACT_APP_API_URL}/products/${id}`;
+  const response = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      'content-type': 'application/json',
+      authorization: `bearer ${localStorage.getItem('joldikino-token')}`
+    },
+    body: JSON.stringify({ isAdvertised: false })
+  });
+  const data = await response.json();
+  return data;
+}
