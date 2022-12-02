@@ -7,6 +7,7 @@ import { AuthContext } from '../../contexts/AuthProvider';
 const MyOrders = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
+  // fetch bookings data
   const { data: orders = [], isLoading } = useQuery({
     queryKey: ['bookings'],
     queryFn: async () => {
