@@ -28,7 +28,7 @@ const ProductCheckoutForm = ({ bookingInfo }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setClientSecret(data.clientSecret);
         setLoading(false);
       });

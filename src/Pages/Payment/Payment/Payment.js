@@ -10,8 +10,9 @@ const stripePromise = loadStripe(process.env.REACT_APP_STRIPE_PK);
 
 const Payment = () => {
   const bookingInfo = useLoaderData();
+  
   const payingDate = format(new Date(), 'PP');
-  console.log(bookingInfo);
+  // console.log(bookingInfo);
   return (
     <div>
       <div className="border-2 md:flex justify-evenly p-2">

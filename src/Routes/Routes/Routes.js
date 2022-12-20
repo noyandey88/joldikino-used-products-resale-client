@@ -90,7 +90,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/dashboard/payment/:id',
-        loader: ({ params }) => fetch(`${process.env.REACT_APP_API_URL}/bookings/${params.id}`, {
+        loader: ({ params }) => fetch(`${process.env.REACT_APP_API_URL}/bookings/product/${params.id}`, {
           headers: {
             authorization: `bearer ${localStorage.getItem('joldikino-token')}`
           }
