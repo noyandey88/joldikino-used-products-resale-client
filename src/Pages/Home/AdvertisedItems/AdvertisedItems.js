@@ -16,7 +16,7 @@ const AdvertisedItems = ({advertisedItems, refetch, isLoading}) => {
         <h1 className="text-4xl text-center font-bold">Advertised Items</h1>
       </div>
       {/* all advertised products */}
-      <div className="px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-0 lg:pt-10">
+      <div className="px-4 pt-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-0 lg:pt-0">
         <div className="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
           {
             advertisedItems.map(product => <AdvertisedItem
