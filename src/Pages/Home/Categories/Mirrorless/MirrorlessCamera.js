@@ -61,7 +61,7 @@ const MirrorlessCamera = ({ camera, setMirrorlessCamera, refetch }) => {
                   <CheckCircleIcon className="w-6 h-6 text-blue-500" />
                 </div>
                 :
-                <p className="mb-3 font-medium text-sm">Seller: {sellerName}</p>
+                <p className="mb-3 font-medium text-sm pb-1">Seller: {sellerName}</p>
             }
           </div>
           <h2
@@ -69,19 +69,19 @@ const MirrorlessCamera = ({ camera, setMirrorlessCamera, refetch }) => {
           >
             {productName}
           </h2>
-          <p className="mb-2 text-gray-700">
+          <p className="mb-2 text-gray-700 text-sm">
             {camera?.description.slice(0, 100)}...
           </p>
           <div className="flex justify-between">
             <div>
-              <p className="font-medium">Original Price: ${originalPrice}</p>
-              <p className="font-medium">Resale Price: ${resalePrice}</p>
-              <p className="font-medium">Status: {stock}</p>
+              <p className="font-medium text-sm">Original Price: ${originalPrice}</p>
+              <p className="font-medium text-sm">Resale Price: ${resalePrice}</p>
+              <p className="font-medium text-sm">Status: {stock}</p>
             </div>
             <div>
-              <p className="font-medium">Condition: {condition}</p>
-              <p className="font-medium">Location: {location}</p>
-              <p className="font-medium">Used: {used}</p>
+              <p className="font-medium text-sm">Condition: {condition}</p>
+              <p className="font-medium text-sm">Location: {location}</p>
+              <p className="font-medium text-sm">Used: {used} Years</p>
             </div>
           </div>
           {

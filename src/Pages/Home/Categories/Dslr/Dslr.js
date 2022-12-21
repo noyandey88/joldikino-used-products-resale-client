@@ -20,26 +20,31 @@ const Dslr = () => {
   }
 
   return (
-    <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-      <div className="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
+    <>
+    <div className='text-center'>
+      <h1 className="text-2xl font-bold uppercase">DSLR Camera</h1>
+    </div>
+      <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full md:px-24 lg:px-0 lg:py-12">
+        <div className="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
+          {
+            cameras?.map(camera => <DslrCamera
+              key={camera._id}
+              camera={camera}
+              setDslrCamera={setDslrCamera}
+              refetch={refetch}
+            ></DslrCamera>)
+          }
+        </div>
         {
-          cameras?.map(camera => <DslrCamera
-            key={camera._id}
-            camera={camera}
+          dslrCamera &&
+          <BookDslrCamera
+            camera={dslrCamera}
             setDslrCamera={setDslrCamera}
             refetch={refetch}
-          ></DslrCamera>)
+          ></BookDslrCamera>
         }
       </div>
-      {
-        dslrCamera &&
-        <BookDslrCamera
-          camera={dslrCamera}
-            setDslrCamera={setDslrCamera}
-            refetch={refetch}
-        ></BookDslrCamera>
-      }
-    </div>
+    </>
   );
 };
 

@@ -20,26 +20,31 @@ const Mirrorless = () => {
   }
 
   return (
-    <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-      <div className="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
+    <>
+      <div className='text-center'>
+        <h1 className="text-2xl font-bold uppercase">Mirrorless Camera</h1>
+      </div>
+      <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full md:px-24 lg:px-0 lg:py-12">
+        <div className="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
+          {
+            cameras?.map(camera => <MirrorlessCamera
+              key={camera._id}
+              camera={camera}
+              setMirrorlessCamera={setMirrorlessCamera}
+              refetch={refetch}
+            ></MirrorlessCamera>)
+          }
+        </div>
         {
-          cameras?.map(camera => <MirrorlessCamera
-            key={camera._id}
-            camera={camera}
+          mirrorlessCamera &&
+          <BookMirrorlessCamera
+            camera={mirrorlessCamera}
             setMirrorlessCamera={setMirrorlessCamera}
             refetch={refetch}
-          ></MirrorlessCamera>)
+          ></BookMirrorlessCamera>
         }
       </div>
-        {
-        mirrorlessCamera &&
-        <BookMirrorlessCamera
-          camera={mirrorlessCamera}
-            setMirrorlessCamera={setMirrorlessCamera}
-            refetch={refetch}
-        ></BookMirrorlessCamera>
-        }
-    </div>
+    </>
   );
 };
 
