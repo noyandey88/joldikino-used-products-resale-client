@@ -4,8 +4,8 @@ import Spinner from '../../Components/Spinner';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const PrivateRoute = ({ children }) => {
-  const { user, loading } = useContext(AuthContext);
   const location = useLocation();
+  const { user, loading } = useContext(AuthContext);
 
   if (loading) {
     return <Spinner></Spinner>

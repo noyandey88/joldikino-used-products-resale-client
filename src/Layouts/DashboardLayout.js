@@ -1,28 +1,13 @@
 import { UserCircleIcon } from '@heroicons/react/24/solid';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { Outlet } from 'react-router-dom';
-import { getUserRole } from '../api/user';
 import Sidebar from '../Components/Dashboard/Sidebar';
 import { AuthContext } from '../contexts/AuthProvider';
 import Footer from '../Pages/Shared/Footer/Footer';
 import Navbar from '../Pages/Shared/Navbar/Navbar';
 
 const DashboardLayout = () => {
-  const { user } = useContext(AuthContext);
-  const [userRole, setUserRole] = useState(null);
-
-  // get user role
-  useEffect(() => {
-    getUserRole(user?.email)
-      .then(data => {
-        console.log(data);
-        setUserRole(data);
-      })
-      .catch(error => {
-        console.error(error);
-      })
-  }, [user]);
-
+  const { user, userRole } = useContext(AuthContext);
   console.log(userRole);
 
   return (

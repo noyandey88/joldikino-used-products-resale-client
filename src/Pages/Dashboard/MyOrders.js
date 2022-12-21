@@ -33,7 +33,13 @@ const MyOrders = () => {
   }
 
   return (
-    orders.length !== 0 ?
+    orders?.length === 0 ?
+      <>
+        <div className="min-h-screen flex justify-center">
+          <h2 className="text-4xl font-semibold">You haven't any orders.</h2>
+        </div>
+      </>
+      :
       <>
         <div>
           <div className="mb-2">
@@ -53,7 +59,7 @@ const MyOrders = () => {
                 </thead>
                 <tbody>
                   {
-                    orders.map((order, i) => <tr key={order._id}>
+                    orders?.map((order, i) => <tr key={order._id}>
                       <th>{i + 1}</th>
                       <td>
                         <img className="w-12 h-12 object-cover" src={order?.itemImage} alt="orderedImage" />
@@ -77,10 +83,6 @@ const MyOrders = () => {
           </div>
         </div>
       </>
-      :
-      <div className="min-h-screen flex justify-center">
-        <h2 className="text-4xl font-semibold">You haven't any orders.</h2>
-      </div>
   );
 };
 

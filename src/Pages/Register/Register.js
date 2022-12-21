@@ -64,6 +64,7 @@ const Register = () => {
         console.log(user);
         saveUserWithRegister(user, 'buyer');
         toast.success('Register with Google successful');
+        navigate('/');
       })
       .catch((error) => {
         console.error(error);
