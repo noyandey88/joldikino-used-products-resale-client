@@ -1,19 +1,30 @@
 import { useQuery } from '@tanstack/react-query';
-import React from 'react';
+import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
 import { deleteSavedUser } from '../../api/user';
 import Buyer from '../../Components/Dashboard/Buyer';
 import Spinner from '../../Components/Spinner';
+import { AuthContext } from '../../contexts/AuthProvider';
 
 const AllBuyers = () => {
+  const { logoutUser } = useContext(AuthContext);
   const { data: buyers = [], refetch, isLoading } = useQuery({
     queryKey: ['users'],
     queryFn: async () => {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/users?role=buyer`, {
         headers: {
-          authorization: `bearer ${localStorage.getItem('joldikino-token')}`
+          // authorization: `bearer ${localStorage.getItem('joldikino-token')}`
+          authorization: `bearer ${window.document.cookie.split('; ')[1].split('=')[1]}`
         }
       });
+      // when auth token is expired
+      if (res.status === 401 || res.status === 403) {
+        return logoutUser().then(() => {
+          toast.error("Session Expired");
+        }).catch((err) => {
+          console.error(err);
+        })
+      }
       const data = await res.json();
       return data;
     }
@@ -39,7 +50,7 @@ const AllBuyers = () => {
   return (
     <div>
       {
-        buyers.map(buyer => <Buyer
+        buyers?.map(buyer => <Buyer
           key={buyer._id}
           buyer={buyer}
           handleDeleteBuyer={handleDeleteBuyer}

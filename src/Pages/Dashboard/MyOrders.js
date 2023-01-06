@@ -1,22 +1,32 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Spinner from '../../Components/Spinner';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const MyOrders = () => {
   const navigate = useNavigate();
-  const { user } = useContext(AuthContext);
+  const { user, logoutUser } = useContext(AuthContext);
   // fetch bookings data
   const { data: orders = [], isLoading } = useQuery({
     queryKey: ['bookings'],
     queryFn: async () => {
-      const response = await fetch(`${process.env.REACT_APP_API_URL}/bookings/${user?.email}`, {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/bookings/${user?.email}`, {
         headers: {
-          authorization: `bearer ${localStorage.getItem('joldikino-token')}`
+          // authorization: `bearer ${localStorage.getItem('joldikino-token')}`
+          authorization: `bearer ${window.document.cookie.split('; ')[1].split('=')[1]}`
         }
       });
-      const data = await response.json();
+      // when auth token is expired
+      if (res.status === 401 || res.status === 403) {
+        return logoutUser().then(() => {
+          toast.error("Session Expired");
+        }).catch((err) => {
+          console.error(err);
+        })
+      }
+      const data = await res.json();
       return data;
     }
   });
@@ -33,13 +43,7 @@ const MyOrders = () => {
   }
 
   return (
-    orders?.length === 0 ?
-      <>
-        <div className="min-h-screen flex justify-center">
-          <h2 className="text-4xl font-semibold">You haven't any orders.</h2>
-        </div>
-      </>
-      :
+    orders?.length !== 0 ?
       <>
         <div>
           <div className="mb-2">
@@ -81,6 +85,12 @@ const MyOrders = () => {
               </table>
             </div>
           </div>
+        </div>
+      </>
+      :
+      <>
+        <div className="min-h-screen flex justify-center">
+          <h2 className="text-4xl font-semibold">You haven't any orders.</h2>
         </div>
       </>
   );

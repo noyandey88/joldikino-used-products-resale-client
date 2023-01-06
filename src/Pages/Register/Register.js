@@ -93,7 +93,9 @@ const Register = () => {
             {errors.name && <p className="mt-1 text-red-500 font-semibold">{errors.name?.message}</p>}
             {/* Photo */}
             <div className="relative flex items-center mt-8">
-              <input {...register("image")}
+              <input {...register("image", {
+                required: "Image is required"
+              })}
                 type="file" className="block w-full py-3 text-gray-700 bg-white border rounded-md px-4 focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" accept="image/*" />
             </div>
             {/* email */}

@@ -12,7 +12,10 @@ const AuthProvider = ({ children }) => {
 
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
-  const [userRole, setUserRole] = useState(null);
+  const [userRole, setUserRole] = useState("");
+  const [isAdmin, setIsAdmin] = useState(false);
+  const [isSeller, setIsSeller] = useState(false);
+  const [isBuyer, setIsBuyer] = useState(false);
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -57,11 +60,14 @@ const AuthProvider = ({ children }) => {
       .then(data => {
         console.log(data);
         setUserRole(data);
+        data === 'admin' ? setIsAdmin(true) : setIsAdmin(false);
+        data === 'seller' ? setIsSeller(true) : setIsSeller(false);
+        data === 'buyer' ? setIsBuyer(true) : setIsBuyer(false);
       })
-      .catch(error => {
-        console.error(error);
+      .catch((err) => {
+        console.error(err);
       })
-  }, [user]);
+  }, [user?.email]);
 
   const authInfo = {
     createUser,
@@ -72,7 +78,10 @@ const AuthProvider = ({ children }) => {
     user,
     loading,
     setLoading,
-    userRole
+    userRole,
+    isAdmin,
+    isSeller,
+    isBuyer
   }
 
   return (
