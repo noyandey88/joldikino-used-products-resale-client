@@ -29,7 +29,7 @@ const AuthProvider = ({ children }) => {
 
   const logoutUser = () => {
     setLoading(true);
-    localStorage.removeItem('joldikino-token');
+    // localStorage.removeItem('joldikino-token');
     return signOut(auth);
   };
 
