@@ -10,8 +10,8 @@ const ReportedItems = () => {
     queryFn: async () => {
       const response = await fetch(`${process.env.REACT_APP_API_URL}/reported`, {
         headers: {
-          // authorization: `bearer ${localStorage.getItem('joldikino-token')}`
-          authorization: `bearer ${window.document.cookie.split('; ')[1].split('=')[1]}`
+          authorization: `bearer ${localStorage.getItem('joldikino-token')}`
+          // authorization: `bearer ${window.document.cookie.split('; ')[1].split('=')[1]}`
         }
       });
       const data = await response.json();

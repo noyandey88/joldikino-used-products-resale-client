@@ -44,7 +44,7 @@ export const saveUserWithLogin = (user) => {
       console.log(data);
 
       // save auth token in local storage
-      // localStorage.setItem('joldikino-token', data.token);
+      localStorage.setItem('joldikino-token', data.token);
     })
     .catch(error => {
       console.error(error);

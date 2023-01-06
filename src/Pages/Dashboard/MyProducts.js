@@ -14,8 +14,8 @@ const MyProducts = () => {
     queryFn: async () => {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/products/seller?email=${user?.email}`, {
         headers: {
-          // authorization: `bearer ${localStorage.getItem('joldikino-token')}`
-          authorization: `bearer ${window.document.cookie.split('; ')[1].split('=')[1]}`
+          authorization: `bearer ${localStorage.getItem('joldikino-token')}`
+          // authorization: `bearer ${window.document.cookie.split('; ')[1].split('=')[1]}`
         }
       });
       // when auth token is expired
