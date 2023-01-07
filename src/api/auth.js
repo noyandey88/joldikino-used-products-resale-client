@@ -7,8 +7,10 @@ export const saveUserWithRegister = (user, role) => {
   // save user to database
   fetch(`${process.env.REACT_APP_API_URL}/user/${user?.email}`, {
     method: 'PUT',
+    credentials: 'include',
     headers: {
-      'content-type': 'application/json'
+      'content-type': 'application/json',
+      "Access-Control-Allow-Credentials": true,
     },
     body: JSON.stringify(currentUser)
   })
@@ -35,7 +37,8 @@ export const saveUserWithLogin = (user) => {
     method: 'PUT',
     credentials: 'include',
     headers: {
-      'content-type': 'application/json'
+      'content-type': 'application/json',
+      "Access-Control-Allow-Credentials": true,
     },
     body: JSON.stringify(currentUser)
   })
