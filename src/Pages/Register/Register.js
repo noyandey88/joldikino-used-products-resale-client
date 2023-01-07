@@ -17,7 +17,7 @@ const Register = () => {
     const email = data.email;
     const password = data.password;
     const image = data.image[0];
-    const role = data.role;
+    const role = data.role.toLowerCase()
     console.log(role);
     const formData = new FormData();
     formData.append('image', image);
@@ -33,13 +33,13 @@ const Register = () => {
           .then((result) => {
             setLoading(true);
             const user = result.user;
+            saveUserWithRegister(user, role);
             // update profile
             updateUserProfile(name, data.data.url)
               .then(() => {
-                toast.success('User created successfully with name and photo');
                 setLoading(false);
                 navigate('/');
-                saveUserWithRegister(user, role);
+                toast.success('User created successfully with name and photo');
               })
               .catch(error => {
                 console.error(error);
@@ -49,11 +49,11 @@ const Register = () => {
           })
           .catch((error) => {
             console.error(error);
+            setLoading(false);
             toast.error(error.message);
           })
       }).catch(error => {
         console.log(error);
-        setLoading(false);
       })
   };
 
@@ -131,8 +131,8 @@ const Register = () => {
                 <p className="mb-1 font-medium">Select Role:</p>
               </label>
               <select {...register("role")} defaultValue="buyer" name="role" className="block w-full px-4 py-3 text-gray-700 bg-white border rounded-md focus:border-blue-400 focus:ring-blue-300 focus:outline-none focus:ring focus:ring-opacity-40" id="role">
-                <option value="buyer">buyer</option>
-                <option value="seller">seller</option>
+                <option value="buyer">Buyer</option>
+                <option value="seller">Seller</option>
               </select>
             </div>
             <div className="mt-6">

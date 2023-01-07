@@ -1,4 +1,4 @@
-import { SwatchIcon, UserCircleIcon } from '@heroicons/react/24/solid';
+import { SwatchIcon } from '@heroicons/react/24/solid';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
