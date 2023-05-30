@@ -1,10 +1,13 @@
+import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import Spinner from '../../../Components/Spinner';
+import DownloadApp from '../../../Components/downloadApp/DownloadApp';
+import Review from '../../../Components/review/Review';
+import Stats from '../../../Components/stats/Stats';
+import Brands from '../../Home/Brands/Bands';
 import AdvertisedItems from '../AdvertisedItems/AdvertisedItems';
 import Banner from '../Banner/Banner';
 import Categories from '../Categories/Categories';
-import Brands from '../../Home/Brands/Bands';
-import { useQuery } from '@tanstack/react-query';
-import Spinner from '../../../Components/Spinner';
 
 const Home = () => {
 
@@ -36,6 +39,9 @@ const Home = () => {
           ></AdvertisedItems>
       }
       <Brands></Brands>
+      <Stats />
+      <Review/>
+      <DownloadApp/>
     </div>
   );
 };
