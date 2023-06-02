@@ -8,17 +8,16 @@ export default function NewCollections() {
           <div className="grid p-6 bg-gray-100 rounded place-content-center sm:p-8">
             <div className="max-w-md mx-auto text-center lg:text-left">
               <header>
-                <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">Watches</h2>
+                <h2 className="text-xl font-bold text-gray-900 sm:text-3xl">New Collections</h2>
 
                 <p className="mt-4 text-gray-500">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quas
-                  rerum quam amet provident nulla error!
+                  Visit our sites or subscribe our newsletters for new update of products and collections.
                 </p>
               </header>
 
               <Link
                 to="/"
-                className="inline-block px-12 py-3 mt-8 text-sm font-medium text-white transition bg-gray-900 border border-gray-900 rounded hover:shadow focus:outline-none focus:ring"
+                className="inline-block px-12 py-3 mt-8 text-sm font-medium text-white transition bg-green-500 border rounded hover:shadow focus:outline-none focus:ring"
               >
                 Shop All
               </Link>

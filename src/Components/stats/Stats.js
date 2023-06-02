@@ -21,7 +21,7 @@ export default function Stats() {
           <h6 className="text-4xl font-bold text-deep-purple-accent-400">
             819
           </h6>
-          <p className="mb-2 font-bold text-md">Downloads</p>
+          <p className="mb-2 font-bold text-md">Verified Sellers</p>
           <p className="text-gray-700">
             It’s something that’s many of the wisest people in history have kept
             in mind.
@@ -68,7 +68,7 @@ export default function Stats() {
               />
             </svg>
           </div>
-          <h6 className="text-4xl font-bold text-deep-purple-accent-400">91</h6>
+          <h6 className="text-4xl font-bold text-deep-purple-accent-400">491</h6>
           <p className="mb-2 font-bold text-md">Subscribers</p>
           <p className="text-gray-700">
             It's a helluva start, being able to recognize what makes you happy

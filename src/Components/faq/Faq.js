@@ -5,7 +5,7 @@ export default function Faq() {
   return (
     <>
       <div className="text-center mb-8">
-        <h2 className="text-2xl font-bold">Frequently Asked Questions</h2>
+        <h2 className="text-3xl font-bold">Frequently Asked Questions</h2>
       </div>
       <div className="space-y-4">
         {/* 1 */}
