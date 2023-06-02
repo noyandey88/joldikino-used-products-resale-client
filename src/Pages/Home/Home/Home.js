@@ -2,8 +2,11 @@ import { useQuery } from '@tanstack/react-query';
 import React from 'react';
 import Spinner from '../../../Components/Spinner';
 import DownloadApp from '../../../Components/downloadApp/DownloadApp';
+import Faq from '../../../Components/faq/Faq';
+import NewCollections from '../../../Components/newCollections/NewCollections';
 import Review from '../../../Components/review/Review';
 import Stats from '../../../Components/stats/Stats';
+import Subscribe from '../../../Components/subscribe/Subscribe';
 import Brands from '../../Home/Brands/Bands';
 import AdvertisedItems from '../AdvertisedItems/AdvertisedItems';
 import Banner from '../Banner/Banner';
@@ -40,8 +43,11 @@ const Home = () => {
       }
       <Brands></Brands>
       <Stats />
+      <NewCollections/>
       <Review/>
-      <DownloadApp/>
+      <Faq />
+      <Subscribe/>
+      <DownloadApp />
     </div>
   );
 };
