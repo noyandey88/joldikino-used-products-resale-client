@@ -41,12 +41,12 @@ const Home = () => {
             isLoading={isLoading}
           ></AdvertisedItems>
       }
-      <Brands></Brands>
-      <Stats />
       <NewCollections/>
+      <Stats />
       <Review/>
       <Faq />
       <Subscribe/>
+      <Brands/>
       <DownloadApp />
     </div>
   );

@@ -37,7 +37,7 @@ const AdvertisedItem = ({ camera, setAdvertisedProduct, refetch }) => {
   return (
     stock === 'available' &&
     <>
-      <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
+      <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm mb-8">
         <img
           src={productImage}
           className="object-cover w-full h-64"
