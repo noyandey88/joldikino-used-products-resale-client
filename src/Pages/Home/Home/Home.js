@@ -5,8 +5,8 @@ import DownloadApp from '../../../Components/downloadApp/DownloadApp';
 import Faq from '../../../Components/faq/Faq';
 import NewCollections from '../../../Components/newCollections/NewCollections';
 import Review from '../../../Components/review/Review';
-import Stats from '../../../Components/stats/Stats';
 import Subscribe from '../../../Components/subscribe/Subscribe';
+import Teams from '../../../Components/teams/Teams';
 import Brands from '../../Home/Brands/Bands';
 import AdvertisedItems from '../AdvertisedItems/AdvertisedItems';
 import Banner from '../Banner/Banner';
@@ -42,7 +42,8 @@ const Home = () => {
           ></AdvertisedItems>
       }
       <NewCollections/>
-      <Stats />
+      {/* <Stats /> */}
+      <Teams/>
       <Review/>
       <Faq />
       <Subscribe/>
