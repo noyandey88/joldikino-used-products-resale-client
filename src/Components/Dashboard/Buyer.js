@@ -7,7 +7,7 @@ const Buyer = ({ buyer, handleDeleteBuyer }) => {
     <>
       <tr className="text-center">
         <td className="whitespace-nowrap font-semibold px-4 py-2 text-gray-900 flex justify-center">
-          <UserIcon className="w-16 h-16" />
+          <UserIcon className="w-16 h-16 text-gray-500" />
         </td>
         <td className="whitespace-nowrap font-semibold px-4 py-2 text-gray-700">{name}</td>
         <td className="whitespace-nowrap font-semibold px-4 py-2 text-gray-700">{email}</td>

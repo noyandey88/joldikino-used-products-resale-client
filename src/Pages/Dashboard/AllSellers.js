@@ -61,16 +61,42 @@ const AllSellers = () => {
   }
 
   return (
-    <div>
-      {
-        sellers?.map(seller => <Seller
-          key={seller._id}
-          seller={seller}
-          handleVerifySeller={handleVerifySeller}
-          handleDeleteSeller={handleDeleteSeller}
-        ></Seller>)
-      }
-    </div>
+    <>
+      <div className="overflow-x-auto">
+        <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+          <thead className="uppercase">
+            <tr>
+              <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
+                Image
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
+                Name
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
+                Email
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
+                Status
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-bold text-gray-900">
+                Action
+              </th>
+            </tr>
+          </thead>
+
+          <tbody className="divide-y divide-gray-200">
+            {
+              sellers?.map(seller => <Seller
+                key={seller._id}
+                seller={seller}
+                handleVerifySeller={handleVerifySeller}
+                handleDeleteSeller={handleDeleteSeller}
+              ></Seller>)
+            }
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 
