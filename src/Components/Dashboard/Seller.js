@@ -1,13 +1,13 @@
-import { UserIcon } from '@heroicons/react/24/solid';
+import { UserCircleIcon } from '@heroicons/react/24/solid';
 import React from 'react';
 
 const Seller = ({ seller, handleVerifySeller, handleDeleteSeller }) => {
-  const { _id, name, isVerified, email } = seller;
+  const { _id, name, isVerified, email } = seller || {};
   return (
     <>
       <tr className="text-center">
         <td className="whitespace-nowrap font-semibold px-4 py-2 text-gray-900 flex justify-center">
-          <UserIcon className="w-16 h-16 text-gray-500" />
+          <UserCircleIcon className="w-16 h-16 text-slate-500" />
         </td>
         <td className="whitespace-nowrap font-semibold px-4 py-2 text-gray-700">{name}</td>
         <td className="whitespace-nowrap font-semibold px-4 py-2 text-gray-700">{email}</td>
