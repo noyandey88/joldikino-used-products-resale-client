@@ -82,12 +82,17 @@ const Navbar = () => {
         <ul className="flex items-center hidden space-x-8 lg:flex">
           {
             user?.uid ?
-                <button onClick={handleLogout} className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md btn bg-green-500 border-0 hover:bg-green-600">Logout</button>
+              <button
+                onClick={handleLogout}
+                className="inline-block rounded border border-green-600 bg-green-600 px-8 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-green-600 focus:outline-none focus:ring active:text-green-500"
+              >
+                Logout
+              </button>
               :
               <li>
                 <Link
                   to="/login"
-                  className="inline-flex items-center justify-center h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md btn bg-green-500 border-0 hover:bg-green-600"
+                  className="inline-block rounded border border-green-600 bg-green-600 px-8 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-green-600 focus:outline-none focus:ring active:text-green-500"
                 >
                   Login
                 </Link>
