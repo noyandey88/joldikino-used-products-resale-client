@@ -3,13 +3,13 @@ import React from 'react';
 import Spinner from '../../../Components/Spinner';
 import DownloadApp from '../../../Components/downloadApp/DownloadApp';
 import Faq from '../../../Components/faq/Faq';
+import Hero from '../../../Components/hero/Hero';
 import NewCollections from '../../../Components/newCollections/NewCollections';
 import Review from '../../../Components/review/Review';
 import Subscribe from '../../../Components/subscribe/Subscribe';
 import Teams from '../../../Components/teams/Teams';
 import Brands from '../../Home/Brands/Bands';
 import AdvertisedItems from '../AdvertisedItems/AdvertisedItems';
-import Banner from '../Banner/Banner';
 import Categories from '../Categories/Categories';
 
 const Home = () => {
@@ -24,14 +24,14 @@ const Home = () => {
   });
 
   if (isLoading) {
-    return <Spinner></Spinner>
+    return <Spinner/>
   };
 
   console.log(advertisedItems);
 
   return (
     <div>
-      <Banner></Banner>
+      <Hero/>
       <Categories></Categories>
       {
         advertisedItems.length > 0 &&

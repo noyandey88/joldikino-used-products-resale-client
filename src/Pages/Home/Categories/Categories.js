@@ -6,7 +6,7 @@ import action from '../../../assets/cameras/action-camera.jpg'
 
 const Categories = () => {
   return (
-    <div className="px-4 lg:px-0 my-24">
+    <div className="px-4 lg:px-0 mt-16 mb-20">
       <div className="mb-8">
         <h1 className="text-4xl text-center font-bold">Camera Categories</h1>
       </div>
