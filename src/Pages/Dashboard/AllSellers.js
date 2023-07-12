@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { deleteSavedUser, verifyUser } from '../../api/user';
 import Seller from '../../Components/Dashboard/Seller';
 import Spinner from '../../Components/Spinner';
+import { deleteSavedUser, verifyUser } from '../../api/user';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const AllSellers = () => {
