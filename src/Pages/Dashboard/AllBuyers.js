@@ -1,9 +1,9 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
 import toast from 'react-hot-toast';
-import { deleteSavedUser } from '../../api/user';
 import Buyer from '../../Components/Dashboard/Buyer';
 import Spinner from '../../Components/Spinner';
+import { deleteSavedUser } from '../../api/user';
 import { AuthContext } from '../../contexts/AuthProvider';
 
 const AllBuyers = () => {
@@ -49,13 +49,36 @@ const AllBuyers = () => {
 
   return (
     <div>
-      {
-        buyers?.map(buyer => <Buyer
-          key={buyer._id}
-          buyer={buyer}
-          handleDeleteBuyer={handleDeleteBuyer}
-        ></Buyer>)
-      }
+      <div className="overflow-x-auto">
+        <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm">
+          <thead className="ltr:text-left rtl:text-right">
+            <tr>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Image
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Name
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Email
+              </th>
+              <th className="whitespace-nowrap px-4 py-2 font-medium text-gray-900">
+                Action
+              </th>
+            </tr>
+          </thead>
+          
+          <tbody className="divide-y divide-gray-200">
+            {
+              buyers?.map(buyer => <Buyer
+                key={buyer._id}
+                buyer={buyer}
+                handleDeleteBuyer={handleDeleteBuyer}
+              ></Buyer>)
+            }
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
