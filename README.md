@@ -2,6 +2,8 @@
 
 This is a web application built for buying and selling used products. It allows users to create an account, list their used products for sale, and browse through available products to make purchases. The application supports three different roles: Admin, Seller, and Buyer.
 
+> LIVE SITE : **[Joldikino](https://joldikino-assignment.web.app/)**
+
 ## Table of Contents
 
 - [Technologies Used](#technologies-used)
