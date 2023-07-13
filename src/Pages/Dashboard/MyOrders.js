@@ -4,6 +4,7 @@ import { toast } from 'react-hot-toast';
 import { useNavigate } from 'react-router-dom';
 import Spinner from '../../Components/Spinner';
 import { AuthContext } from '../../contexts/AuthProvider';
+import Empty from '../../ui/Empty';
 
 const MyOrders = () => {
   const navigate = useNavigate();
@@ -89,9 +90,7 @@ const MyOrders = () => {
       </>
       :
       <>
-        <div className="min-h-screen flex justify-center">
-          <h2 className="text-4xl font-semibold">You haven't any orders.</h2>
-        </div>
+        <Empty/>
       </>
   );
 };

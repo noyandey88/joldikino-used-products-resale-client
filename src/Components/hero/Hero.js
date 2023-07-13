@@ -36,7 +36,8 @@ export default function Hero() {
         <div className='flex-1'>
             {/* lottie */}
             <Lottie className="aspect-auto lg:w-full lg:aspect-auto lg:-mt-36 p-8"
-              animationData={cameraAnimation} loop={true} />
+            animationData={cameraAnimation} loop={true}
+          />
         </div>
       </div>
     </section>
