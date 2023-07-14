@@ -1,10 +1,14 @@
+import { motion } from 'framer-motion';
 import Lottie from "lottie-react";
 import { Link } from "react-router-dom";
 import cameraAnimation from "../../assets/animation_lk05ugyp.json";
 
 export default function Hero() {
   return (
-    <section>
+    <motion.section
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.75, ease: "linear" }} >
       <div className="px-4 pt-20 gap-12 text-gray-600 overflow-hidden md:px-0 md:flex">
         <div className='flex-none space-y-5 max-w-xl'>
           <Link to="/blogs" className='inline-flex gap-x-6 items-center rounded-full p-1 pr-6 border text-sm font-medium duration-150 hover:bg-white'>
@@ -21,6 +25,11 @@ export default function Hero() {
           <h1 className="text-4xl text-gray-800 font-extrabold sm:text-5xl">
             Revive & Rediscover: Unleash the Beauty of Preloved
           </h1>
+          {/* framer motion testing */}
+          <motion.h2>
+            Welcome to the style motion
+          </motion.h2>
+          {/* framer motion testing */}
           <p>
             Unlock a world of hidden gems at our resale haven. Browse, buy, and embrace the beauty of preloved treasures, waiting to be cherished anew. Experience the joy of sustainable shopping with our curated collection of quality used products.
           </p>
@@ -40,6 +49,6 @@ export default function Hero() {
           />
         </div>
       </div>
-    </section>
+    </motion.section>
   )
 }
