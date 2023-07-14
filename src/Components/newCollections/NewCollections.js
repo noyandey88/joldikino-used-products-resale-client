@@ -10,7 +10,7 @@ export default function NewCollections() {
             initial={{ y: 100 }}
             whileInView={{ y: 0 }}
             transition={{ type: "spring", stiffness: 50, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
-            // viewport={{ once: true }}
+            viewport={{ once: true }}
             className="grid p-6 bg-gray-100 rounded place-content-center sm:p-8">
             <div className="max-w-md mx-auto text-center lg:text-left">
               <header>
@@ -36,6 +36,7 @@ export default function NewCollections() {
                 initial={{ y: 100 }}
                 whileInView={{ y: 0 }}
                 transition={{ type: "spring", stiffness: 40, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
+                viewport={{ once: true }}
               >
                 <Link to="/" className="block group">
                   <img
@@ -60,6 +61,7 @@ export default function NewCollections() {
                 initial={{ y: 100 }}
                 whileInView={{ y: 0 }}
                 transition={{ type: "spring", stiffness: 30, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
+                viewport={{ once: true }}
               >
                 <Link to="/" className="block group">
                   <img

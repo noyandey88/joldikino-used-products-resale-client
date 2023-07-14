@@ -1,16 +1,28 @@
+import { motion } from "framer-motion"
+
 export default function Subscribe() {
   return (
     <section>
       <div className="p-8 md:p-12 lg:px-16 lg:py-24">
-        <div className="mx-auto max-w-lg text-center">
+        <motion.div
+          initial={{ y: 100 }}
+          whileInView={{ y: 0 }}
+          transition={{ type: "spring", stiffness: 50, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
+          viewport={{ once: true }}
+          className="mx-auto max-w-lg text-center">
           <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
             Subscribe for new products offers
           </h2>
           <p className="hidden text-gray-500 text-sm sm:mt-2 sm:block">
             Subscribe our newsletters to get the news of new products and discounts.
           </p>
-        </div>
-        <div className="mx-auto mt-8 max-w-xl">
+        </motion.div>
+        <motion.div
+          initial={{ y: 100 }}
+          whileInView={{ y: 0 }}
+          transition={{ type: "spring", stiffness: 45, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
+          viewport={{ once: true }}
+          className="mx-auto mt-8 max-w-xl">
           <form action="#" className="sm:flex sm:gap-4">
             <div className="sm:flex-1">
               <label htmlFor="email" className="sr-only">Email</label>
@@ -23,7 +35,7 @@ export default function Subscribe() {
               </svg>
             </button>
           </form>
-        </div>
+        </motion.div>
       </div>
     </section>
   )
