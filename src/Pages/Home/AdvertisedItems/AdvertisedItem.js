@@ -42,15 +42,15 @@ const AdvertisedItem = ({ camera, setAdvertisedProduct, refetch, index }) => {
     stock === 'available' &&
     <>
       <motion.div
-        initial={{ x: "100%" }}
-        whileInView={{ x: "0%" }}
+        initial={{ x: 200 }}
+        whileInView={{ x: 0 }}
         transition={{ type: "spring", stiffness: (30 + index * 10), duration: (index > 1 ? (index / 4) + 1 : index), ease: "easeInOut" }}
         viewport={{ once: true }}
         className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm mb-8">
         <img
           src={productImage}
           className="object-cover w-full h-64"
-          alt=""
+          alt="advertised"
         />
         <div className="p-5 border border-t-0">
           <div className="flex justify-between items-center">

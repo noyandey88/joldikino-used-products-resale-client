@@ -1,12 +1,24 @@
+import { motion } from "framer-motion"
+
 export default function Review() {
   return (
     <section className="bg-white">
       <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 sm:py-24 lg:px-8">
-        <h2 className="text-center text-4xl font-bold tracking-tight sm:text-3xl">
+        <motion.h2
+          initial={{ x: -100 }}
+          whileInView={{ x: 0 }}
+          transition={{ type: "spring", stiffness: 40, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
+          viewport={{ once: true }}
+          className="text-center text-4xl font-bold tracking-tight sm:text-3xl">
           Read trusted reviews from our customers
-        </h2>
+        </motion.h2>
         <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
-          <blockquote className="rounded-lg bg-gray-100 p-8">
+          <motion.blockquote
+            initial={{ x: -200 }}
+            whileInView={{ x: 0 }}
+            transition={{ type: "spring", stiffness: 30, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
+            viewport={{ once: true }}
+            className="rounded-lg bg-gray-100 p-8">
             <div className="flex items-center gap-4">
               <img alt="Man" src="https://images.pexels.com/photos/1040881/pexels-photo-1040881.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className="h-16 w-16 rounded-full object-cover" />
               <div>
@@ -33,8 +45,13 @@ export default function Review() {
             <p className="line-clamp-2 sm:line-clamp-none mt-4 text-gray-500">
               "I simply filled out the online form, provided details about my camera's condition, and received an instant quote. The offered price was fair and competitive compared to other platforms."
             </p>
-          </blockquote>
-          <blockquote className="rounded-lg bg-gray-100 p-8">
+          </motion.blockquote>
+          <motion.blockquote
+            initial={{ x: -200 }}
+            whileInView={{ x: 0 }}
+            transition={{ type: "spring", stiffness: 40, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
+            viewport={{ once: true }}
+            className="rounded-lg bg-gray-100 p-8">
             <div className="flex items-center gap-4">
               <img alt="woman" src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className="h-16 w-16 rounded-full object-cover" />
               <div>
@@ -61,8 +78,13 @@ export default function Review() {
             <p className="line-clamp-2 sm:line-clamp-none mt-4 text-gray-500">
               "I've used several camera resale sites in the past, but [Camera Resale Site] stands out from the rest. The platform is user-friendly, making it a breeze to list and sell my camera equipment."
             </p>
-          </blockquote>
-          <blockquote className="rounded-lg bg-gray-100 p-8">
+          </motion.blockquote>
+          <motion.blockquote
+            initial={{ x: -200 }}
+            whileInView={{ x: 0 }}
+            transition={{ type: "spring", stiffness: 50, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
+            viewport={{ once: true }}
+            className="rounded-lg bg-gray-100 p-8">
             <div className="flex items-center gap-4">
               <img alt="Man" src="https://images.pexels.com/photos/2589653/pexels-photo-2589653.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className="h-16 w-16 rounded-full object-cover" />
               <div>
@@ -89,7 +111,7 @@ export default function Review() {
             <p className="line-clamp-2 sm:line-clamp-none mt-4 text-gray-500">
               "The shipping process was straightforward, and I appreciated the prepaid shipping label provided. The payment was processed promptly after my camera was evaluated and received safely."
             </p>
-          </blockquote>
+          </motion.blockquote>
         </div>
       </div>
     </section>

@@ -19,8 +19,8 @@ const Categories = () => {
       <div className="my-8 grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* DSLR Cameras */}
         <motion.div
-          initial={{ x: "-100%" }}
-          whileInView={{ x: "0%" }}
+          initial={{ x: -200 }}
+          whileInView={{ x: 0 }}
           transition={{ type: "spring", stiffness: 30, duration: 1, ease: "easeInOut", bounce: 0.3 }}
           viewport={{ once: true }}
         >
@@ -52,8 +52,8 @@ const Categories = () => {
         </motion.div>
         {/* Mirrorless cameras */}
         <motion.div
-          initial={{ x: "-100%" }}
-          whileInView={{ x: "0%" }}
+          initial={{ x: -200 }}
+          whileInView={{ x: 0 }}
           transition={{ type: "spring", stiffness: 40, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
           viewport={{ once: true }}
         >
@@ -85,8 +85,8 @@ const Categories = () => {
         </motion.div>
         {/* Action Cameras */}
         <motion.div
-          initial={{ x: "-100%" }}
-          whileInView={{ x: "0%" }}
+          initial={{ x: -200 }}
+          whileInView={{ x: 0 }}
           transition={{ type: "spring", stiffness: 50, duration: 1.5, ease: "easeInOut", bounce: 0.3 }}
           viewport={{ once: true }}
         >

@@ -1,15 +1,24 @@
+import { motion } from "framer-motion"
 
 export default function Faq() {
   // const [isOpen, setIsOpen] = useState(false);
-  
   return (
     <>
       <div className="text-center mb-8">
-        <h2 className="text-3xl font-bold">Frequently Asked Questions</h2>
+        <motion.h2
+          initial={{ y: 100 }}
+          whileInView={{ y: 0 }}
+          transition={{ type: "spring", stiffness: 60, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
+          viewport={{ once: true }}
+          className="text-3xl font-bold">Frequently Asked Questions</motion.h2>
       </div>
       <div className="space-y-4">
         {/* 1 */}
-        <details
+        <motion.details
+          initial={{ y: 100 }}
+          whileInView={{ y: 0 }}
+          transition={{ type: "spring", stiffness: 50, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
+          viewport={{ once: true }}
           className="group border-s-4 border-green-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden"
           open
         >
@@ -37,9 +46,13 @@ export default function Faq() {
           <p className="mt-4 leading-relaxed text-gray-700">
             We distribute our products by a product delivery service. You can receive a purchased product within 2-3 days.
           </p>
-        </details>
+        </motion.details>
         {/* 2 */}
-        <details
+        <motion.details
+          initial={{ y: 100 }}
+          whileInView={{ y: 0 }}
+          transition={{ type: "spring", stiffness: 40, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
+          viewport={{ once: true }}
           className="group border-s-4 border-green-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden"
         >
           <summary className="flex cursor-pointer items-center justify-between gap-1.5">
@@ -66,9 +79,13 @@ export default function Faq() {
           <p className="mt-4 leading-relaxed text-gray-700">
             No. You don't need to provide any extra charges to product delivery service assistant.
           </p>
-        </details>
+        </motion.details>
         {/* 3 */}
-        <details
+        <motion.details
+          initial={{ y: 100 }}
+          whileInView={{ y: 0 }}
+          transition={{ type: "spring", stiffness: 30, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
+          viewport={{ once: true }}
           className="group border-s-4 border-green-500 bg-gray-50 p-6 [&_summary::-webkit-details-marker]:hidden"
         >
           <summary className="flex cursor-pointer items-center justify-between gap-1.5">
@@ -95,7 +112,7 @@ export default function Faq() {
           <p className="mt-4 leading-relaxed text-gray-700">
             You can contact with the particular product seller or you can contact with our customer support to return the product.
           </p>
-        </details>
+        </motion.details>
       </div>
     </>
   )
