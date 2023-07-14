@@ -14,7 +14,7 @@ const Blogs = () => {
             <motion.div
               initial={{ y: "100%" }}
               animate={{ y: "0%" }}
-              transition={{ duration: 1, ease: "easeInOut" }}
+              transition={{ type: "spring", stiffness: 40, duration: 1, ease: "easeInOut" }}
             >
               <p className="mb-4 text-xl font-medium">
                 What are the different ways to manage a state in a React Application?
@@ -27,7 +27,7 @@ const Blogs = () => {
             <motion.div
               initial={{ y: "100%" }}
               animate={{ y: "0%" }}
-              transition={{ duration: 1.1, ease: "easeInOut" }}
+              transition={{ type: "spring", stiffness: 35, duration: 1.1, ease: "easeInOut" }}
             >
               <p className="mb-4 text-xl font-medium">
                 How does prototypical inheritance work?
@@ -42,7 +42,7 @@ const Blogs = () => {
             <motion.div
               initial={{ y: "100%" }}
               animate={{ y: "0%" }}
-              transition={{ duration: 1, ease: "easeInOut" }}
+              transition={{ type: "spring", stiffness: 30, duration: 1, ease: "easeInOut" }}
             >
               <p className="mb-4 text-xl font-medium">
                 What is unit test? Why should we write unit tests?
@@ -57,7 +57,7 @@ const Blogs = () => {
             <motion.div
               initial={{ y: "100%" }}
               animate={{ y: "0%" }}
-              transition={{ duration: 1.1, ease: "easeInOut" }}
+              transition={{ type: "spring", stiffness: 25, duration: 1.1, ease: "easeInOut" }}
             >
               <p className="mb-4 text-xl font-medium">
                 React vs Angular vs Vue?

@@ -30,7 +30,7 @@ const Home = () => {
   console.log(advertisedItems);
 
   return (
-    <div>
+    <div className="overflow-hidden">
       <Hero/>
       <Categories></Categories>
       {

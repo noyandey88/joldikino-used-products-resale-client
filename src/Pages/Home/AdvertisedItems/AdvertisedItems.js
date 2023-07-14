@@ -9,7 +9,7 @@ const AdvertisedItems = ({advertisedItems, refetch, isLoading}) => {
   if (isLoading) {
     return <Spinner></Spinner>
   }
-  
+
   return (
     <div>
       <div className="mb-8">
@@ -19,11 +19,12 @@ const AdvertisedItems = ({advertisedItems, refetch, isLoading}) => {
       <div className="px-4 pt-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-0 lg:pt-0">
         <div className="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
           {
-            advertisedItems.map(product => <AdvertisedItem
+            advertisedItems.map((product, i) => <AdvertisedItem
               key={product._id}
               camera={product}
               setAdvertisedProduct={setAdvertisedProduct}
               refetch={refetch}
+              index={i + 1}
             ></AdvertisedItem>)
           }
         </div>

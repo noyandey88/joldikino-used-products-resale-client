@@ -1,11 +1,12 @@
 import { CheckCircleIcon } from '@heroicons/react/24/solid';
+import { motion } from 'framer-motion';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { updateStatusToReported } from '../../../api/product';
 import { sellerVerification } from '../../../api/user';
 import { AuthContext } from '../../../contexts/AuthProvider';
 
-const AdvertisedItem = ({ camera, setAdvertisedProduct, refetch }) => {
+const AdvertisedItem = ({ camera, setAdvertisedProduct, refetch, index }) => {
   const [isVerified, setIsVerified] = useState(false);
   const { productName, originalPrice, resalePrice, productImage, location, postedOn, condition, sellerName, stock, description, sellerEmail, used, status } = camera;
   const { userRole, user } = useContext(AuthContext);
@@ -34,10 +35,18 @@ const AdvertisedItem = ({ camera, setAdvertisedProduct, refetch }) => {
         toast.error(error.message);
       })
   }
+
+  console.log(index);
+
   return (
     stock === 'available' &&
     <>
-      <div className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm mb-8">
+      <motion.div
+        initial={{ x: "100%" }}
+        whileInView={{ x: "0%" }}
+        transition={{ type: "spring", stiffness: (30 + index * 10), duration: (index > 1 ? (index / 4) + 1 : index), ease: "easeInOut" }}
+        viewport={{ once: true }}
+        className="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm mb-8">
         <img
           src={productImage}
           className="object-cover w-full h-64"
@@ -108,7 +117,7 @@ const AdvertisedItem = ({ camera, setAdvertisedProduct, refetch }) => {
             </>
           }
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };
