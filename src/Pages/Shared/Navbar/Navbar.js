@@ -1,4 +1,5 @@
 import { SwatchIcon } from '@heroicons/react/24/solid';
+import { motion } from 'framer-motion';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
@@ -63,7 +64,12 @@ const Navbar = () => {
   }
 
   return (
-    <div className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-4 lg:px-0">
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 1, ease: "easeInOut" }}
+      className="px-4 py-5 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-4 lg:px-0"
+    >
       <div className="relative flex items-center justify-between">
         <Link
           to="/"
@@ -179,7 +185,7 @@ const Navbar = () => {
           )}
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
