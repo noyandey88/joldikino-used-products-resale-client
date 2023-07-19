@@ -7,11 +7,11 @@ export default function Subscribe() {
         <motion.div
           initial={{ y: 100 }}
           whileInView={{ y: 0 }}
-          transition={{ type: "spring", stiffness: 50, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
+          transition={{ type: "spring", stiffness: 60, duration: 1, ease: "easeInOut", bounce: 0.3 }}
           viewport={{ once: true }}
           className="mx-auto max-w-lg text-center">
-          <h2 className="text-2xl font-bold text-gray-900 md:text-3xl">
-            Subscribe for new products offers
+          <h2 className="text-xl font-bold text-gray-900 md:text-3xl">
+            Subscribe for <span className="block md:inline">new products offers</span>
           </h2>
           <p className="hidden text-gray-500 text-sm sm:mt-2 sm:block">
             Subscribe our newsletters to get the news of new products and discounts.
@@ -20,7 +20,7 @@ export default function Subscribe() {
         <motion.div
           initial={{ y: 100 }}
           whileInView={{ y: 0 }}
-          transition={{ type: "spring", stiffness: 45, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
+          transition={{ type: "spring", stiffness: 50, duration: 1, ease: "easeInOut", bounce: 0.3 }}
           viewport={{ once: true }}
           className="mx-auto mt-8 max-w-xl">
           <form action="#" className="sm:flex sm:gap-4">

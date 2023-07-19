@@ -7,14 +7,10 @@ import mirrorless from '../../../assets/cameras/mirrorless-camera.jpg';
 
 const Categories = () => {
   return (
-    <motion.section
-      initial={{ opacity: 0.5 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 1, ease: "easeInOut" }}
-      viewport={{ once: true }}
+    <section
       className="px-4 lg:px-0 mb-20">
       <div className="mb-8">
-        <h1 className="text-4xl text-center font-bold">Camera Categories</h1>
+        <h1 className="text-xl md:text-3xl text-center font-bold">Camera Categories</h1>
       </div>
       <div className="my-8 grid grid-cols-1 md:grid-cols-3 gap-4">
         {/* DSLR Cameras */}
@@ -117,7 +113,7 @@ const Categories = () => {
           </Link>
         </motion.div>
       </div>
-    </motion.section>
+    </section>
   );
 };
 

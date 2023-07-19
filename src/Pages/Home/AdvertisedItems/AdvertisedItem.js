@@ -1,4 +1,4 @@
-import { CheckCircleIcon } from '@heroicons/react/24/solid';
+import { CheckCircleIcon, ExclamationTriangleIcon } from '@heroicons/react/24/solid';
 import { motion } from 'framer-motion';
 import React, { useContext, useState } from 'react';
 import toast from 'react-hot-toast';
@@ -99,23 +99,49 @@ const AdvertisedItem = ({ camera, setAdvertisedProduct, refetch, index }) => {
               {
                 userRole !== 'seller' &&
                 <div className="grid grid-cols-2 gap-4 items-center">
-                  {
+                  {/* {
                     stock !== 'booked' ?
                       <label onClick={() => setAdvertisedProduct(camera)} className="btn bg-green-500 hover:bg-green-600 border-0 mt-2" htmlFor="book-advertisedItem">Book</label>
                       :
                       <button className="mt-2 btn text-gray-200 bg-green-500 hover:bg-green-600 border-0 btn-disabled">Booked</button>
-                  }
+                  } */}
                   {/* <button className="btn btn-primary mt-2">Book</button> */}
-                  {
+                  {/* {
                     status !== 'reported' ?
                       <button onClick={handleReportToAdmin} className="btn bg-green-500 hover:bg-green-600 border-0 mt-2">Report To Admin</button>
                       :
                       <button className="mt-2 btn bg-green-500 hover:bg-green-600 border-0 text-gray-200 btn-disabled">Reported</button>
-                  }
+                  } */}
                 </div>
               }
             </>
           }
+          <span className="flex gap-2 items-center overflow-hidden rounded-sm shadow-sm mt-2">
+            {
+              stock !== "booked" ?
+                (
+                  <label onClick={() => setAdvertisedProduct(camera)} className="flex-grow border-e px-4 py-2 bg-green-500 text-sm cursor-pointer font-semibold text-white hover:bg-green-600 focus:relative" htmlFor="book-advertisedItem">
+                    Place Order
+                  </label>
+                ) : (
+                  <button disabled={true} className={`inline-block flex-grow border-e px-4 py-2 ${stock === "booked" ? "bg-green-300" : "bg-green-500"} text-sm font-semibold text-white`}>
+                    Order Placed
+                  </button>
+                )
+            }
+            {
+              status !== 'reported' ?
+                (
+                  <button onClick={handleReportToAdmin} className={`inline-block px-4 py-2 ${status === "reported" ? "bg-red-300" : "bg-red-500"} text-white hover:bg-red-600 focus:relative`} title="View Orders">
+                    <ExclamationTriangleIcon className="w-5 h-5" />
+                  </button>
+                ) : (
+                  <button disabled={true} className="inline-block px-4 py-2 bg-red-500 text-white" title="View Orders">
+                    <ExclamationTriangleIcon className="w-6 h-6" />
+                  </button>
+                )
+            }
+          </span>
         </div>
       </motion.div>
     </>

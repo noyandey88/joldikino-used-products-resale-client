@@ -5,10 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // colors: {
-      //   primary: '#480CA8',
-      //   secondary: '#560BAD',
-      // }
+      fontFamily: {
+        inter: ['Exo', 'sans-serif']
+      }
     },
   },
   plugins: [require("daisyui")],

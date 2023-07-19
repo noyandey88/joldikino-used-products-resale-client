@@ -13,7 +13,7 @@ const AdvertisedItems = ({advertisedItems, refetch, isLoading}) => {
   return (
     <div>
       <div className="mb-8">
-        <h1 className="text-4xl text-center font-bold">Advertised Items</h1>
+        <h1 className="text-xl md:text-3xl text-center font-bold">Advertised Items</h1>
       </div>
       {/* all advertised products */}
       <div className="px-4 pt-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-0 lg:pt-0">

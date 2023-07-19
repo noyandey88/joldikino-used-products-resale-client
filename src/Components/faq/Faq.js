@@ -10,7 +10,7 @@ export default function Faq() {
           whileInView={{ y: 0 }}
           transition={{ type: "spring", stiffness: 60, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
           viewport={{ once: true }}
-          className="text-3xl font-bold">Frequently Asked Questions</motion.h2>
+          className="text-xl md:text-3xl font-bold">Frequently Asked Questions</motion.h2>
       </div>
       <div className="space-y-4">
         {/* 1 */}

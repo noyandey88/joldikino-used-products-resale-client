@@ -9,8 +9,8 @@ export default function Review() {
           whileInView={{ x: 0 }}
           transition={{ type: "spring", stiffness: 40, duration: 1.25, ease: "easeInOut", bounce: 0.3 }}
           viewport={{ once: true }}
-          className="text-center text-4xl font-bold tracking-tight sm:text-3xl">
-          Read trusted reviews from our customers
+          className="text-center text-xl font-bold tracking-tight sm:text-3xl">
+          Read trusted reviews <span className="block md:inline">from our customers</span>
         </motion.h2>
         <div className="mt-12 grid grid-cols-1 gap-4 md:grid-cols-3 md:gap-8">
           <motion.blockquote
