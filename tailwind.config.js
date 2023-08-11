@@ -6,7 +6,7 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        inter: ['Exo', 'sans-serif']
+        inter: "var(--font-inter)",
       }
     },
   },
